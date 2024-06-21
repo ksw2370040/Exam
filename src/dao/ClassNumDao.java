@@ -11,7 +11,7 @@ import bean.ClassNum;
 import bean.School;
 
 public class ClassNumDao extends Dao{
-	private String baseSql = "select * from class_num where school_cd=?";
+	private String baseSql = "select class_num from class_num where school_cd=?";
 	private List<String> postFilter(ResultSet rSet, School school)throws Exception{
 		List<String> list = new ArrayList<>();
 		try{
