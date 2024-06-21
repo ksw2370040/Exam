@@ -70,6 +70,7 @@ footer p{
 #title{
 
 }
+<<<<<<< HEAD
 .box {
     border: #dddddd 1px solid; /* 境界線の指定 */
     padding: 10px;
@@ -101,4 +102,7 @@ footer p{
     box-sizing: border-box; /* paddingとborderを含めたボックスサイズ計算 */
     text-align:center;
 }
+=======
+
+>>>>>>> branch 'master' of https://github.com/ksw2370040/Exam.git
 
