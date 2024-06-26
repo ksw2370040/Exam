@@ -8,8 +8,8 @@
 
 		<h2>科目情報登録</h2>
 		<p>登録が完了しました</p>
-		<a href="../student/StudentCreate.action">戻る</a>
+		<a href="../subject/SubjectCreate.action">戻る</a>
 
-		<a href="../student/StudentList.action">科目一覧</a>
+		<a href="../subject/SubjectList.action">科目一覧</a>
 	</c:param>
 </c:import>

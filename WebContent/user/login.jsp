@@ -1,22 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>得点管理システム</title>
-      <link href="../css/stylesheet.css" rel="stylesheet" />
-
-</head>
-<body>
-
-<header>
-        <h1>得点管理システム</h1>
-        <div class="header">
-                <span>${sessionScope.user.name}様</span>
-                <a href="../user/logout.jsp">ログアウト</a>
-        </div>
-    </header>
     <p></p>
     <div class="box-container">
 <div class=box>
@@ -46,5 +29,3 @@
 </form>
 </div>
 </div>
-</body>
-</html>

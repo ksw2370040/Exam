@@ -38,8 +38,6 @@ public void setSubject(HttpServletRequest req)
 		SubjectDao subjectDao= new SubjectDao();
 		Subject subjects = subjectDao.get(subject_cd,user.getSchool());
 		req.setAttribute("subjects", subjects);
-
-
 	}
 public void setNumSet(HttpServletRequest req)
 	throws Exception{
