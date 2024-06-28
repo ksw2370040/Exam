@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Subject;
+import bean.Teacher;
 import bean.Test;
+import subject.Util;
 
 @WebServlet("/TestRegistAction")
 public class TestRegistAction extends HttpServlet {
@@ -55,13 +57,18 @@ public class TestRegistAction extends HttpServlet {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 try (ResultSet resultSet = statement.executeQuery()) {
                     while (resultSet.next()) {
+                    	Util util = new Util();
+                    	Teacher teacher=util.getUser(request);
                         Subject subject = new Subject();
-                        subject.setSchoolCd(resultSet.getString("SCHOOL_CD"));
+                        subject.setSchool(teacher.getSchool());
                         subject.setCd(resultSet.getString("CD"));
                         subject.setName(resultSet.getString("NAME"));
                         subjects.add(subject);
                     }
-                }
+                } catch (Exception e) {
+					// TODO 自動生成された catch ブロック
+					e.printStackTrace();
+				}
             }
 
             // リクエストスコープに設定

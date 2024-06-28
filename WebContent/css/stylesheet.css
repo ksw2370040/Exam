@@ -9,8 +9,11 @@ header {
 header .header {
     margin-right: 10px;
     margin-bottom: 20px;
-    width: 100%;
+    width: 75%;
     text-align: right;
+    position:absolute;
+    transform: translateY(-150%);
+
 }
 
 header h1 {
@@ -137,6 +140,8 @@ footer p{
 	position: absolute;
 	top: 240px;
 	left: 650px;
+	line-height: 90%;
+
 }
 
 .sub3 {

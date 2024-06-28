@@ -1,39 +1,38 @@
 package bean;
 
 public class Test implements java.io.Serializable {
-    private static final long serialVersionUID = 1L;
 
-    private String studentNo;
-    private String subjectCd;
-    private String schoolCd;
+    private Student student;
+    private School school;
+    private Subject subject;
+    private String classNum;
     private int no;
     private int point;
-    private String classNum;
 
     // コンストラクタ、ゲッター、セッターは省略
 
-    public String getStudentNo() {
-        return studentNo;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentNo(String studentNo) {
-        this.studentNo = studentNo;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public String getSubjectCd() {
-        return subjectCd;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubjectCd(String subjectCd) {
-        this.subjectCd = subjectCd;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
-    public String getSchoolCd() {
-        return schoolCd;
+    public School getSchool() {
+        return school;
     }
 
-    public void setSchoolCd(String schoolCd) {
-        this.schoolCd = schoolCd;
+    public void setSchoolCd(School school) {
+        this.school = school;
     }
 
     public int getNo() {
