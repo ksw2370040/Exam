@@ -92,9 +92,9 @@ public class SubjectDao extends Dao{
 				statement.setString(2, subject.getCd());
 				statement.setString(3, subject.getName());
 			}else{
-				statement = connection.prepareStatement("update subject set cd=? where name=?");
-				statement.setString(1, subject.getCd());
-				statement.setString(2,subject.getName());
+				statement = connection.prepareStatement("update subject set name=? where cd=?");
+				statement.setString(1, subject.getName());
+				statement.setString(2,subject.getCd());
 			}
 			count = statement.executeUpdate();
 		}catch (Exception e){

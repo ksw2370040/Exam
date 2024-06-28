@@ -32,12 +32,12 @@ public void setEntYearSet(HttpServletRequest req)
 	}
 public void setSubject(HttpServletRequest req)
 	throws Exception{
-		HttpSession session = req.getSession();
-		Teacher user =(Teacher) session.getAttribute("user");
-		String subject_cd= (String) req.getAttribute("cd");
+		Util util = new Util();
+		Teacher user = util.getUser(req);
+		String subject_cd= req.getParameter("cd");
 		SubjectDao subjectDao= new SubjectDao();
-		Subject subjects = subjectDao.get(subject_cd,user.getSchool());
-		req.setAttribute("subjects", subjects);
+		Subject subject = subjectDao.get(subject_cd,user.getSchool());
+		req.setAttribute("subject", subject);
 	}
 public void setNumSet(HttpServletRequest req)
 	throws Exception{
