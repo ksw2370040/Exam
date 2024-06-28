@@ -13,7 +13,7 @@ public class LoginAction extends Action{
 	)throws Exception{
 	HttpSession session=req.getSession();
 
-	if(session.getAttribute("user")!=null){
+	if(session.getAttribute("password")!=null){
 		Teacher teacher =(Teacher) session.getAttribute("user");
 		session.setAttribute("id",teacher.getId());
 		session.setAttribute("password", teacher.getPassword());

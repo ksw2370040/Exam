@@ -29,8 +29,8 @@
                 <li><label for="score">成績管理</label></li>
                 <li><a href="" id="score">成績登録</a></li>
                 <li><a href="" id="score">成績参照</a></li>
-                <li><a href="">科目管理</a></li>
-            </ul>
+				<li><a href="../subject/SubjectList.action">科目管理</a></li>
+			</ul>
         </nav>
     </div>
     <div class="content">
