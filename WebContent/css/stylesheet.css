@@ -1,6 +1,6 @@
 header {
     background-color: #D9E5FF;
-    width: 50%;
+    width: 75%;
     padding: 10px 0;
     margin: 0 auto;
     }
@@ -10,7 +10,7 @@ header .header {
     margin-right: 10px;
     margin-bottom: 20px;
     width: 100%;
-     text-align: right;
+    text-align: right;
 }
 
 header h1 {
@@ -22,28 +22,30 @@ header h1 {
 .header span,
 .header a {
     margin-left: 10px;
-     text-align: right;
+    text-align: right;
 }
 body{
 	margin:0;
-	 align-items: center;
+	align-items: center;
 }
 footer {
   left: 0;
   bottom: 0;
-  width: 100%;
-  	display: inline-block;
-	position: relative;
+  width: 75%;
+  display: inline-block;
+  position: relative;
 
   background: #dcdcdc;
-  margin:0;
-  	padding: 0;
+  margin:0 auto;
+  margin-left: 12.5%;
+  padding: 0;
+  text-align: center;
 
 }
 footer p{
   display: flex;
   justify-content: center;
-    margin:5px;
+  margin:5px;
 }
 .sidebar{
 	float:left;
@@ -51,9 +53,11 @@ footer p{
 	display: inline-block;
 	position: relative;
 	line-height:200%;
-    margin-left: 20px;
+    margin-left: 15%;
     margin-right: 60px;
     height:100vh;
+    padding-right: 10%;
+    border-right: 2px solid #DDDDDD;
 }
 .sidebar ul{
 	padding-left:0;
@@ -103,3 +107,47 @@ footer p{
     text-align:center;
 }
 
+.menu {
+	width: 52%;
+	margin-left: 33%;
+	text-align: left;
+	background-color: #dddddd;
+}
+.sub {
+	width: 15%;
+	height: 20%;
+	margin: 10px;
+	line-height: 7;
+    text-align: center;
+	background-color: #FF97C2;
+	border-radius: 10px;
+	position: absolute;
+	top: 240px;
+	left: 420px;
+}
+
+.sub2 {
+	width: 15%;
+	height: 20%;
+	margin: 10px 0;
+	line-height: 1.3;
+	text-align: center;
+	background-color: #93FFAB;
+	border-radius: 10px;
+	position: absolute;
+	top: 240px;
+	left: 650px;
+}
+
+.sub3 {
+	width: 15%;
+	height: 20%;
+	line-height: 7;
+	margin: 10px;
+	text-align: center;
+	background-color: #C299FF;
+	border-radius: 10px;
+	position: absolute;
+	top: 240px;
+	left: 860px;
+}
