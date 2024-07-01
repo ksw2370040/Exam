@@ -87,10 +87,10 @@ public class SubjectDao extends Dao{
 			Subject old = get(subject.getCd(),subject.getSchool());
 			if (old == null){
 				statement = connection.prepareStatement(
-						"insert into subject(cd, name, school_cd) values(?,?,?)");
-				statement.setString(1, subject.getCd());
-				statement.setString(2, subject.getName());
-				statement.setString(3, subject.getSchool().getCd());
+						"insert into subject(school_cd, cd, name) values(?,?,?)");
+				statement.setString(1, subject.getSchool().getCd());
+				statement.setString(2, subject.getCd());
+				statement.setString(3, subject.getName());
 			}else{
 				statement = connection.prepareStatement("update subject set name=? where cd=?");
 				statement.setString(1, subject.getName());
