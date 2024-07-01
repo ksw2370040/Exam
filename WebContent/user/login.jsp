@@ -39,6 +39,11 @@
             font-size: 10px;
             color: #333;
         }
+        footer{
+            position: fixed;
+            bottom: 0;
+            height: 50px;
+        }
     </style>
 </head>
 
@@ -47,7 +52,7 @@
 <header>
     <h1>得点管理システム</h1>
 </header>
-
+<p></p>
 <div class="box-container">
     <div class="login-box">
         <h2>ログイン</h2>
@@ -77,6 +82,11 @@
         }
     }
 </script>
+  <footer>
+        <p>© 2023 TIC</p>
+        <p>大原学園</p>
+    </footer>
 
 </body>
+
 </html>
