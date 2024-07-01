@@ -31,7 +31,7 @@ public class Test implements java.io.Serializable {
         return school;
     }
 
-    public void setSchoolCd(School school) {
+    public void setSchool(School school) {
         this.school = school;
     }
 

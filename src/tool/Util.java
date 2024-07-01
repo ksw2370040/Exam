@@ -1,4 +1,4 @@
-package subject;
+package tool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,8 @@ public void setEntYearSet(HttpServletRequest req)
 	Teacher teacher = getUser(req);
 	List<Student> students=null;
 	StudentDao sDao=new StudentDao();
-	students = sDao.filter(teacher.getSchool(), true);
+	boolean isAttend = true;
+	students = sDao.filter(teacher.getSchool(), isAttend);
 	req.setAttribute("students", students);
 	}
 public void setSubject(HttpServletRequest req)
