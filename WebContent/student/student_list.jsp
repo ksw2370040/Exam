@@ -9,7 +9,7 @@
 </head>
 <body>
     <c:import url="../common/base.jsp">
-        <c:param name="title">学生管理</c:param>
+        <c:param name="title"></c:param>
         <c:param name="scripts"></c:param>
         <c:param name="content">
             <section class="me-4">
@@ -43,7 +43,7 @@
                             </label>
                         </div>
                         <div>
-                            <button id="filter-button">絞り込み</button>
+                            <button id="filter-button">絞込み</button>
                         </div>
                         <div>${errors.get("f1")}</div>
                     </div>

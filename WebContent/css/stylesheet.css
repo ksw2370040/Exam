@@ -51,18 +51,22 @@ footer p{
 	display: inline-block;
 	position: relative;
 	line-height:200%;
-    margin-left: 15%;
+    margin-left: 9%;
     margin-right: 60px;
     height:100vh;
     padding-right: 10%;
     border-right: 2px solid #DDDDDD;
+    text-align: left;
+
 }
 .sidebar ul{
 	padding-left:0;
 
+
 }
 .sidebar li {
     list-style: none;
+
 }
 
 
