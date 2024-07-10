@@ -12,6 +12,31 @@
             bottom: 0;
             height: 50px;
         }
+
+        h2{
+        	height: 60px;
+        	width: 50%;
+        	display: flex;
+  			align-items: center;
+        	margin-left: 25%;
+        	margin-bottom: 20px;
+        	margin-top: 20px;
+        	background-color:#dddddd;
+        }
+        .logout{
+        	height: 40px;
+        	width: 50%;
+        	margin-left: 25%;
+        	display: flex;
+  			justify-content: center;
+  			align-items: center;
+        	background-color:#339966;
+        }
+        .logout2{
+        	width: 50%;
+        	margin-left: 25%;
+        	margin-top: 150px;
+        }
     </style>
 </head>
 <body>
@@ -21,20 +46,13 @@
 
         </div>
     </header>
-    <div style="width: 75%">
-    	<div style ="margin-left: 31%;">
-    	<div style = "background-color:#dddddd;">
-    		<h2>ログアウト</h2>
-    	</div>
-    	<div style="background-color:#339966;">
-    		<div style="text-align: center;">
-    			<p>ログアウトしました</p>
-    		</div>
-    	</div>
-    		<p><a href="../user/Login.action">ログイン</a></p>
-    	</div>
+    <h2>&ensp;ログアウト</h2>
+    <div class= "logout">
+    	<p>ログアウトしました</p>
     </div>
-
+    <div class= "logout2">
+    	<p><a href="../user/Login.action">ログイン</a></p>
+    </div>
     <footer>
         <p>© 2023 TIC</p>
         <p>大原学園</p>
