@@ -13,7 +13,10 @@ import bean.Subject;
 import bean.Test;
 
 public class TestDao extends Dao{
-	private String baseSql = "select stu.ent_year, c.class_num, sub.name, t.no from test t join student stu on t.student_no=stu.no join class_num c on t.class_num = c.class_num join subject sub on t.subject_cd=sub.cd where school_cd=?";
+	private String baseSql =
+			"SELECT student.no as student_no,subject.cd as subject_cd,student.school_cd as school_cd ,coalesce(test.no,1) as no ,coalesce(point,0) as point ,student.class_num as class_num  FROM STUDENT "+
+			"left join TEST on TEST.STUDENT_NO = STUDENT.NO "+
+			"left join SUBJECT on SUBJECT.SCHOOL_CD =STUDENT.SCHOOL_CD where STUDENT.SCHOOL_CD =? ";
 	public Test get(Student student,Subject subject,School school,int no) throws Exception{
 		Test test = new Test();
 		Connection connection = getConnection();
@@ -60,25 +63,34 @@ public class TestDao extends Dao{
 
 	}
 
-	private List<Test> postFilter(ResultSet rSet, School school)throws Exception{
-		List<Test> list = new ArrayList<>();
-		try{
-			while (rSet.next()) {
-				StudentDao studentDao = new StudentDao();
-				SubjectDao subjectDao = new SubjectDao();
-				Test test = new Test();
-				test.setStudent(studentDao.get(rSet.getString("student_no")));
-				test.setSubject(subjectDao.get(rSet.getString("subject_cd"),school));
-				test.setSchool(school);
-				test.setNo(rSet.getInt("no"));
-				test.setPoint(rSet.getInt("point"));
-				test.setClassNum(rSet.getString("class_num"));
-				list.add(test);
-			}
-		}catch (SQLException | NullPointerException e){
-			e.printStackTrace();
-		}
-		return list;
+	private List<Test> postFilter(ResultSet rSet, School school) throws Exception {
+	    List<Test> list = new ArrayList<>();
+	    try {
+	        while (rSet.next()) {
+	            String studentNo = rSet.getString("student_no");  // Assuming "student_no" is the correct column name
+	            String subjectCd = rSet.getString("subject_cd");  // Assuming "subject_cd" is the correct column name
+
+	            StudentDao stuDao = new StudentDao();
+	            Student student = stuDao.get(studentNo);  // Use the actual student number retrieved from ResultSet
+
+	            SubjectDao subDao = new SubjectDao();
+	            Subject subject = subDao.get(subjectCd, school);  // Use the actual subject code and school
+
+	            Test test = new Test();
+	            test.setSchool(school);
+	            test.setNo(rSet.getInt("no"));
+	            test.setClassNum(rSet.getString("class_num"));
+	            test.setPoint(rSet.getInt("point"));
+	            test.setStudent(student);
+	            test.setSubject(subject);
+
+	            list.add(test);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        throw e;  // Rethrow SQLException for handling at higher level if needed
+	    }
+	    return list;
 	}
 
 	public List<Test> filter(int entYear,String classNum ,Subject subject, int num,School school)throws Exception{
@@ -86,10 +98,10 @@ public class TestDao extends Dao{
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet rSet = null;
-		String condition ="and ent_year=? and class_num=? and subject_cd=? and no=?";
-		String order = " order by no asc";
+        String condition = " AND STUDENT.ENT_YEAR =? AND STUDENT.CLASS_NUM = ? AND SUBJECT.CD = ? AND COALESCE(TEST.NO, 1) = ?";
+
 		try{
-			statement = connection.prepareStatement(baseSql +" "+ condition  +" "+ order);
+			statement = connection.prepareStatement(baseSql +" "+ condition );
 			statement.setString(1, school.getCd());
 			statement.setInt(2, entYear);
 			statement.setString(3, classNum);

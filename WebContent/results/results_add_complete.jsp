@@ -8,8 +8,8 @@
 
 		<h2>成績管理</h2>
 		<p>登録が完了しました</p>
-		<a href="../student/StudentCreate.action">戻る</a>
+		<a href="../results/TestRegist2.action">戻る</a>
 
-		<a href="../student/StudentList.action">成績参照</a>
+		<a href="../results/TestList.action">成績参照</a>
 	</c:param>
 </c:import>
