@@ -12,12 +12,17 @@
             var f2Select = document.getElementById('student-f2-create');
             var f1Error = document.getElementById('f1-error');
             var f2Error = document.getElementById('f2-error');
+            var studentNo = document.getElementById('student-no');
+            var studentName = document.getElementById('student-name');
+            var studentNoError = document.getElementById('student-no-error');
+            var studentNameError = document.getElementById('student-name-error');
 
             f1Error.style.display = f1Select.value === '0' ? 'block' : 'none';
             f2Error.style.display = f2Select.value === '0' ? 'block' : 'none';
+            studentNoError.style.display = studentNo.value.trim() === '' ? 'block' : 'none';
+            studentNameError.style.display = studentName.value.trim() === '' ? 'block' : 'none';
 
-            return f1Select.value !== '0' && f2Select.value !== '0';
-
+            return f1Select.value !== '0' && f2Select.value !== '0' && studentNo.value.trim() !== '' && studentName.value.trim() !== '';
         }
     </script>
 </head>
@@ -38,15 +43,17 @@
                                 <option value="${year}" <c:if test="${year==ent_year }">selected</c:if>>${year}</option>
                             </c:forEach>
                         </select>
-                        <div id="f1-error" class="error-message">選択してください。</div>
+                        <div id="f1-error" class="error-message" style="display:none;">選択してください。</div>
                     </div>
                     <div>
                         <label for="student-no">学生番号</label>
-                        <input id="student-no" type="text" name="no" placeholder="学生番号を入力してください" required>
+                        <input id="student-no" type="text" name="no" placeholder="学生番号を入力してください" maxlength="10" required>
+                        <div id="student-no-error" class="error-message" style="display:none;">学生番号を入力してください。</div>
                     </div>
                     <div>
                         <label for="student-name">氏名</label>
-                        <input id="student-name" type="text" name="name" placeholder="氏名を入力してください" required>
+                        <input id="student-name" type="text" name="name" placeholder="氏名を入力してください" maxlength="30" required>
+                        <div id="student-name-error" class="error-message" style="display:none;">氏名を入力してください。</div>
                     </div>
                     <div>
                         <label for="student-f2-create">クラス</label>
@@ -56,6 +63,7 @@
                                 <option value="${num}" <c:if test="${num==class_num}">selected</c:if>>${num}</option>
                             </c:forEach>
                         </select>
+                        <div id="f2-error" class="error-message" style="display:none;">選択してください。</div>
                     </div>
                 </div>
                 <button id="filter-button">登録して終了</button>

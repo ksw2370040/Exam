@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>学生管理</title>
     <link rel="stylesheet" type="text/css" href="../css/student.css">
+
 </head>
 <body>
     <c:import url="../common/base.jsp">
@@ -14,12 +15,12 @@
         <c:param name="content">
             <section class="me-4">
                 <h2>学生管理</h2>
-                <div class=new>
+                <div class="new">
                     <a href="StudentCreate.action">新規登録</a>
                 </div>
                 <form method="get">
                     <div id="filter">
-                        <div class=form-group>
+                        <div class="form-group">
                             <label for="student-f1-select">入学年度</label>
                             <select id="student-f1-select" name="f1">
                                 <option value="0">--------</option>
@@ -78,7 +79,6 @@
                                         </c:choose>
                                     </td>
                                     <td><a href="StudentUpdate.action?no=${student.no}">変更</a></td>
-                                    <td><a href="StudentDelete.action?no=${student.no}">削除</a></td>
                                 </tr>
                             </c:forEach>
                         </table>
