@@ -81,3 +81,23 @@ h2 {
     font-size: 14px;
     margin-top: 5px;
 }
+.link-container {
+    margin-top: 200px; /* 全体を下に移動 */
+}
+
+.link-container a {
+    margin-right: 50px; /* リンク間の間隔 */
+}
+
+#addcomplete h2 {
+    font-size: 24px;
+    background-color: #bbbbbb; /* 背景色を設定 */
+    padding: 10px 20px; /* タイトルの周りに余白を追加 */
+}
+
+#addcomplete p {
+    background-color: #339966;
+    text-align: center;
+     height: 40px; /* 高さを変更 */
+    line-height: 40px; /* 高さに合わせてテキストを中央に配置 */
+    }

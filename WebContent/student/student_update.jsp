@@ -1,5 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理</title>
+    <link rel="stylesheet" type="text/css" href="../css/student-add.css">
+    <script>
+    document.getElementById("changeButton").addEventListener("click", function() {
+        // 他のページに移動するURLを指定
+        window.location.href = "student_update_complete.jsp";
+    });
+</script>
+
+    </head>
+    <body>
 <c:import url="../common/base.jsp">
 
 	<c:param name="title"></c:param>
@@ -8,6 +23,7 @@
 
 			<form action="StudentUpdateExecute.action" method="get">
 				<div id="filter">
+				<h2>学生情報変更</h2>
 					<div>
 						<label>入学年度</label>
 						<p>${student.entYear}</p>
@@ -40,10 +56,16 @@
 						</label>
 					</div>
 					<div>
-						<button>変更</button>
+						<button id="changeButton">変更</button>
 					</div>
 					<div>${errors.get("f1")}</div>
 				</div>
 			</form>
+			 <p></p>
+            <div>
+                <a href="../menu/menu.jsp">戻る</a>
+            </div>
 	</c:param>
 </c:import>
+</body>
+</html>
