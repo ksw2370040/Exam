@@ -76,12 +76,12 @@
 			                        <td>${test.student.no}</td>
 			                        <td>${test.student.name}</td>
 			                        <td>
-										<input id="text" type="text" name="point" value="${test.point}" required>
+										<input id="text" type="text" name="test_point" value="${test.point}" required>
 									</td>
 									<td><input type="hidden" name="student_no" value="${test.student.no}" required></td>
 									<td><input type="hidden" name="subject_cd" value="${test.subject.cd}" required></td>
 									<td><input type="hidden" name="class_num" value="${test.classNum}" required></td>
-									<td><input type="hidden" name="no" value="${test.no}" required></td>
+									<td><input type="hidden" name="test_no" value="${test.no}" required></td>
 									<td><input type="hidden" name="count" value="${tests.size()}" required></td>
 
 								</tr>
