@@ -29,7 +29,7 @@
 					<div>
 						<button id = "button">変更</button>
 					</div>
-					<p><a href="../results/TestRegist2.action">戻る</a>
+					<p><a href="../subject/SubjectList.action">戻る</a>
 				</div>
 			</form>
 		</section>

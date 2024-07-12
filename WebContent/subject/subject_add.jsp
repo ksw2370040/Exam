@@ -30,7 +30,7 @@
 				</div>
 			</form>
 			<div>
-                <a href="../menu/menu.jsp">戻る</a>
+                <a href="../subject/SubjectList.action">戻る</a>
             </div>
 		</section>
 	</c:param>
