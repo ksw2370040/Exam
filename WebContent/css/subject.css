@@ -1,0 +1,56 @@
+section {
+    max-width: 1200px;
+    margin-left: 27%; /* メニューの幅+余白を設定 */
+    margin-right: 1%;
+}
+
+h2{
+	font-size: 24px;
+    background-color: #bbbbbb; /* 背景色を設定 */
+
+    padding: 10px 20px; /* タイトルの周りに余白を追加 */
+}
+
+.new {
+	text-align: right;
+}
+
+#filter div {
+    margin-bottom: 15px; /* 各要素の下に余白を追加 */
+}
+
+
+#filter label {
+    display: block; /* ラベルをブロック要素にすることで上に配置 */
+    margin-bottom: 5px; /* ラベルとフォーム要素の間に余白を追加 */
+}
+
+#filter input[type="text"],
+#filter select {
+
+    padding: 8px; /* フォーム要素のパディングを追加 */
+    border: 1px solid #ccc; /* 枠線を追加 */
+    border-radius: 4px; /* 角丸にする */
+    width: 850px; /* 幅を適宜調整 */
+    box-sizing: border-box; /* パディングとボーダーを含めたボックスサイズ */
+}
+
+
+#button{
+	padding: 10px 20px; /* ボタンのパディングを設定 */
+	background-color: blue; /* ボタンの背景色 */
+    color: white; /* ボタンの文字色 */
+    border: none; /* ボタンの境界線をなくす */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    cursor: pointer; /* ホバー時のカーソルをポインターにする */
+}
+
+.comp{
+	background-color: #339966;
+	text-align: center;
+}
+
+.comp2{
+	margin-top: 150px;
+}
+
