@@ -1,4 +1,4 @@
-package student;
+package results;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Subject;
+import bean.Teacher;
 import bean.Test;
 
 @WebServlet("/TestRegistAction")
@@ -39,9 +40,9 @@ public class TestRegistAction extends HttpServlet {
                 try (ResultSet resultSet = statement.executeQuery()) {
                     while (resultSet.next()) {
                         Test result = new Test();
-                        result.setStudentNo(resultSet.getString("STUDENT_NO"));
-                        result.setSubjectCd(resultSet.getString("SUBJECT_CD"));
-                        result.setSchoolCd(resultSet.getString("SCHOOL_CD"));
+                        result.setStudent(resultSet.getString("STUDENT_NO"));
+                        result.setSubject(resultSet.getString("SUBJECT_CD"));
+                        result.setSchool(resultSet.getString("SCHOOL_CD"));
                         result.setNo(resultSet.getInt("NO"));
                         result.setPoint(resultSet.getInt("POINT"));
                         result.setClassNum(resultSet.getString("CLASS_NUM"));
@@ -55,13 +56,18 @@ public class TestRegistAction extends HttpServlet {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 try (ResultSet resultSet = statement.executeQuery()) {
                     while (resultSet.next()) {
+                    	Util util = new Util();
+                    	Teacher teacher=util.getUser(request);
                         Subject subject = new Subject();
-                        subject.setSchoolCd(resultSet.getString("SCHOOL_CD"));
+                        subject.setSchool(teacher.getSchool());
                         subject.setCd(resultSet.getString("CD"));
                         subject.setName(resultSet.getString("NAME"));
                         subjects.add(subject);
                     }
-                }
+                } catch (Exception e) {
+					// TODO 自動生成された catch ブロック
+					e.printStackTrace();
+				}
             }
 
             // リクエストスコープに設定

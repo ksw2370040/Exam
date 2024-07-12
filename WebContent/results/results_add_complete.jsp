@@ -5,11 +5,20 @@
 	<c:param name="title"></c:param>
 	<c:param name="scripts"></c:param>
 	<c:param name="content">
-
-		<h2>成績管理</h2>
-		<p>登録が完了しました</p>
-		<a href="../student/StudentCreate.action">戻る</a>
-
-		<a href="../student/StudentList.action">成績参照</a>
+	<div style = "margin-left: 28%;">
+		<div style = "width: 85%;">
+			<div style="background-color: #dddddd;">
+				<h2>成績管理</h2>
+			</div>
+			<div style="background-color: #339966;">
+				<div style="text-align: center;">
+					<p>登録が完了しました</p>
+				</div>
+			</div>
+		</div>
+	</div>
+		<p><a href="../results/TestRegist2.action">戻る</a>
+		&ensp; &ensp; &ensp; &ensp; &ensp;
+		<a href="../results/TestList.action">成績参照</a></p>
 	</c:param>
 </c:import>
