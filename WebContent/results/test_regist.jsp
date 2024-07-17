@@ -1,97 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <c:import url="../common/base.jsp">
-    <c:param name="title">成績管理</c:param>
-    <c:param name="scripts"></c:param>
-    <c:param name="content">
-        <div class="container">
-            <h2>成績管理</h2>
 
-            <form action="../student/TestRegistAction" method="get">
-                <table>
-                    <tr>
-                        <th>入学年度</th>
-                        <th>クラス</th>
-                        <th>科目</th>
-                        <th>回数</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select name="year">
-                                <c:forEach var="year" items="${years}">
-                                    <option value="${year}">${year}</option>
-                                </c:forEach>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="classNum">
-                                <c:forEach var="classNum" items="${classes}">
-                                    <option value="${classNum}">${classNum}</option>
-                                </c:forEach>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="subjectCd">
-                                <c:forEach var="subject" items="${subjects}">
-                                    <option value="${subject.cd}">${subject.name}</option>
-                                </c:forEach>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="testNum">
-                                <c:forEach var="testNum" items="${testNumbers}">
-                                    <option value="${testNum}">${testNum}</option>
-                                </c:forEach>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
+	<c:param name="title"></c:param>
+	<c:param name="scripts"></c:param>
+	<c:param name="content">
+		<section class="me-4">
+			<h2>成績管理</h2>
 
-                <div style="margin-top: 20px;">
-                    <button type="submit">検索</button>
-                </div>
-            </form>
+			<form method="get">
+				<div id="filter">
+					<div id="filter">
+						<label for="test-f1-select">入学年度</label>
+						<select id="test-f1-select" name="f1">
+							<option value="0">--------</option>
+							<c:forEach var="year" items="${ent_year_set}">
+								<option value="${year}" <c:if test="${year == f1}">selected</c:if>>${year}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div id="filter">
+						<label for="test-f2-select">クラス</label>
+						<select id="test-f2-select" name="f2">
+							<option value="0">--------</option>
+							<c:forEach var="num" items="${class_num_set}">
+								<option value="${num}" <c:if test="${num == f2}">selected</c:if>>${num}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div id="filter">
+						<label for="test-f3-select">科目名</label>
+						<select id="test-f3-select" name="f3">
+							<option value="0">--------</option>
+							<c:forEach var="sub" items="${subjects}">
+								<option value="${sub.cd}" <c:if test="${sub.cd == f3}">selected</c:if>>${sub.name}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div id="filter">
+						<label for="test-f4-select">回数</label>
+						<select id="test-f4-select" name="f4">
+							<option value="0">0</option>
+							<c:forEach var="n" items="${number}">
+								<option value="${n}" <c:if test="${n == f4}">selected</c:if>>${n}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div>
+						<button id="filter-button" type="submit">絞り込み</button>
+					</div>
+					<div>${errors.get("f1")}</div>
+				</div>
+			</form>
+			<c:choose>
+			    <c:when test="${tests.size() >= 0}">
+					<form action="TestRegist2Execute.action" method="get">
+			            <div>科目:${subject.name}</div>
+			            <c:set var="test" value="${tests[0]}" />
+    					<div>(${test.no}回)</div>
 
-            <c:if test="${not empty testResults}">
-                <h2>成績情報検索結果</h2>
+			            <table>
+			                <tr>
+			                    <th>入学年度</th>
+			                    <th>クラス</th>
+			                    <th>学生番号</th>
+			                    <th>氏名</th>
+			                    <th>点数</th>
+			                    <th></th>
+			                    <th></th>
+			                </tr>
+							<c:forEach var="test" items="${tests}">
+			                    <tr>
+			                        <td>${test.student.entYear}</td>
+			                        <td>${test.student.classNum}</td>
+			                        <td>${test.student.no}</td>
+			                        <td>${test.student.name}</td>
+			                        <td>
+										<input id="text" type="text" name="test_point" value="${test.point}" required>
+									</td>
+									<td><input type="hidden" name="student_no" value="${test.student.no}" required></td>
+									<td><input type="hidden" name="subject_cd" value="${test.subject.cd}" required></td>
+									<td><input type="hidden" name="class_num" value="${test.classNum}" required></td>
+									<td><input type="hidden" name="test_no" value="${test.no}" required></td>
+									<td><input type="hidden" name="count" value="${tests.size()}" required></td>
 
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>入学年度</th>
-                            <th>クラス</th>
-                            <th>学生番号</th>
-                            <th>氏名</th>
-                            <th>点数</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="result" items="${testResults}">
-                            <tr>
-                                <td>${result.entYear}</td>
-                                <td>${result.classNum}</td>
-                                <td>${result.studentNo}</td>
-                                <td>${result.studentName}</td>
-                                <td>
-                                    <form action="test_regist_done.jsp" method="post">
-                                        <input type="hidden" name="studentNo" value="${result.studentNo}">
-                                        <input type="number" name="point_${result.studentNo}"
-                                               value="${result.point}" min="0" max="100">
-                                        <input type="submit" value="更新">
-                                    </form>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-
-                <div style="margin-top: 20px;">
-                    <form action="test_regist_done.jsp" method="post">
-                        <input type="submit" class="button" value="登録して終了">
-                    </form>
-                </div>
-            </c:if>
-        </div>
-    </c:param>
+								</tr>
+							</c:forEach>
+			            </table>
+			            <button>登録して終了</button>
+			        </form>
+			    </c:when>
+			    <c:otherwise>
+			        <div>テストデータが見つかりませんでした。</div>
+			    </c:otherwise>
+			</c:choose>
+		</section>
+	</c:param>
 </c:import>
