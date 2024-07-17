@@ -16,7 +16,7 @@
 
         <div class  = "sub2">
             <p>成績管理</p>
-            <a href = "">成績登録</a><br><br>
+            <a href = "../results/TestRegist2.action">成績登録</a><br><br>
             <a href = "">成績参照</a>
         </div>
 
