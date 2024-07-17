@@ -8,7 +8,7 @@ import bean.Subject;
 import dao.ResultDao;
 import tool.Action;
 
-public class ResultCreateExecuteAction extends Action {
+public class ResultAddAction extends Action {
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
         Util util = new Util();
