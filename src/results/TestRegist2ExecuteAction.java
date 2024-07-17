@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import bean.Student;
 import bean.Subject;
@@ -13,16 +12,16 @@ import bean.Teacher;
 import bean.Test;
 import dao.TestDao;
 import tool.Action;
+import tool.Util;
 
 public class TestRegist2ExecuteAction extends Action {
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        Test test = new Test();
-        Student student = new Student();
-        Subject subject = new Subject();
+    public void execute(
+    			HttpServletRequest req, HttpServletResponse res
+    		) throws Exception {
+		Util util=new Util();
 
         List<Test> tests = new ArrayList<>();
-        HttpSession session = req.getSession();
-        Teacher teacher = (Teacher) session.getAttribute("user");
+        Teacher teacher = util.getUser(req);
 
         String pointstr[] = req.getParameterValues("test_point");
         String student_nos[] = req.getParameterValues("student_no");
@@ -34,6 +33,10 @@ public class TestRegist2ExecuteAction extends Action {
         TestDao dao = new TestDao();
 
         for (int i = 0; i < Integer.parseInt(count); i++) {
+
+        	Student student = new Student();
+            Subject subject = new Subject();
+        	Test test = new Test();
 
             int point = Integer.parseInt(pointstr[i]);
             int no = Integer.parseInt(nostr[i]);
