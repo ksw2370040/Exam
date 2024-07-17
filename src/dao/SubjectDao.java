@@ -79,6 +79,22 @@ public class SubjectDao extends Dao{
 
 		return list;
 	}
+	public List<Subject> filter(School school,String name) throws Exception {
+		List<Subject> list =new ArrayList<>();
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet rSet = null;
+		String order = " order by cd asc";
+		String option ="and name like ?";
+		statement = connection.prepareStatement(baseSql +" "+option+" "+order);
+		statement.setString(1, school.getCd());
+		statement.setString(2, "%" + name + "%");
+
+		rSet = statement.executeQuery();
+		list = postFilter(rSet,school);
+
+		return list;
+	}
 	public boolean save(Subject subject) throws Exception{
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
