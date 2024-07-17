@@ -20,7 +20,7 @@
 	<c:param name="title"></c:param>
 	<c:param name="scripts"></c:param>
 	<c:param name="content">
-
+		<section class= "me-4">
 			<form action="StudentUpdateExecute.action" method="get">
 				<div id="filter">
 				<h2>学生情報変更</h2>
@@ -65,6 +65,7 @@
             <div>
                 <a href="../menu/menu.jsp">戻る</a>
             </div>
+    </section>
 	</c:param>
 </c:import>
 </body>
