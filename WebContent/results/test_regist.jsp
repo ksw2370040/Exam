@@ -54,7 +54,7 @@
 			</form>
 			<c:choose>
 			    <c:when test="${tests.size() >= 0}">
-					<form action="TestRegist2Execute.action" method="get">
+					<form action="TestRegist.action" method="get">
 			            <div>科目:${subject.name}</div>
 			            <c:set var="test" value="${tests[0]}" />
     					<div>(${test.no}回)</div>
