@@ -177,13 +177,12 @@ public class TestDao extends Dao{
                      statement.setInt(5, test.getPoint());
                      statement.setString(6, test.getClassNum());
                  } else {
-                     statement = connection.prepareStatement("update test set POINT=? where STUDENT_NO=? and SUBJECT_CD=? and SCHOOL_CD=? and NO=? and CLASS_NUM=?");
+                     statement = connection.prepareStatement("update test set POINT=? where STUDENT_NO=? and SUBJECT_CD=? and SCHOOL_CD=? and NO=?");
                      statement.setInt(1, test.getPoint());
                      statement.setString(2, test.getStudent().getNo());
                      statement.setString(3, test.getSubject().getCd());
                      statement.setString(4, test.getSchool().getCd());
                      statement.setInt(5, test.getNo());
-                     statement.setString(6, test.getClassNum());
                  }
                  count = statement.executeUpdate();
                  System.out.println(statement);
