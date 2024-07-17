@@ -15,6 +15,11 @@
 	<c:param name="content">
 		<section class="me-4">
 			<h2>科目管理</h2>
+			<form method="get">
+
+				<input id="subject-name" type="text" name="f1" placeholder="科目名を入力してください" >
+				<button id="filter-button">検索</button>
+			</form>
 			<div class= "new">
 				<a href="SubjectCreate.action">新規登録</a>
 			</div>
