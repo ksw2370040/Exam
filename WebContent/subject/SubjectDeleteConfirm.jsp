@@ -7,16 +7,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>削除確認</title>
+	 <link rel="stylesheet" type="text/css" href="../css/subject.css">
 </head>
 <body>
+<c:import url="../common/base.jsp">
+	<c:param name="title"></c:param>
+	<c:param name="scripts"></c:param>
+	<c:param name="content">
+	<section class="me-4">
 	<h2>科目削除確認</h2>
-	<p>本当に科目を削除しますか？</p>
 	<table>
 					<tr>
-						<td>${subject.cd}</td>
-						<td>${subject.name}</td>
-					<td><a class="delete-button" href="SubjectDeleteExecute.action?cd=${subject.cd}">削除</a></td></tr>
-	</table>
+
+						<td><p>「${subject.name}( ${subject.cd})」を削除してもよろしいですか</td></tr>
+<td><a class="delete-button" href="#" onclick="deleteSubject('${subject.cd}')">削除</a></td>
+</table>
+<a href="../subject/SubjectList.action">戻る</a>	</section>
+	</c:param>
+</c:import>
 </body>
 <style>
     .delete-button {
@@ -37,4 +45,21 @@
         background-color: #c9302c;
     }
 </style>
+<script type="text/javascript">
+function deleteSubject(subjectCd) {
+    // XMLHttpRequestを使用して削除リクエストを送信
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "SubjectDeleteExecute.action?cd=" + subjectCd, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // リクエストが成功した場合、削除完了画面にリダイレクト
+            window.location.href = "deleteSuccess.jsp";
+        }
+    };
+    xhr.send();
+}
+</script>
+
+
+
 </html>
