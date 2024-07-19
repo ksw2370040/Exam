@@ -15,8 +15,8 @@
 					<tr>
 						<td>${subject.cd}</td>
 						<td>${subject.name}</td>
-<td><a class="delete-button" href="SubjectDeleteConfirm.action?cd=${subject.cd}">削除</a></td></tr>
-</table>
+					<td><a class="delete-button" href="SubjectDeleteExecute.action?cd=${subject.cd}">削除</a></td></tr>
+	</table>
 </body>
 <style>
     .delete-button {
