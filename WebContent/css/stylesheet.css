@@ -125,12 +125,7 @@ footer p{
     text-align: center;
 }
 
-.menu {
-	width: 100%;
-	margin-left: 26%;
-	text-align: left;
-	background-color: #dddddd;
-}
+
 .sub {
 	width: 22%;
 	height: 20%;
@@ -170,4 +165,11 @@ footer p{
 	position: absolute;
 	top: 240px;
 	left: 920px;
+}
+h2 {
+    font-size: 24px;
+    background-color: #bbbbbb; /* 背景色を設定 */
+
+    padding: 10px 20px; /* タイトルの周りに余白を追加 */
+
 }
