@@ -4,8 +4,8 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>学生管理</title>
-    <link rel="stylesheet" type="text/css" href="../css/student.css">
+    <title>成績参照</title>
+    <link rel="stylesheet" type="text/css" href="../css/test_list.css">
 
 </head>
 <body>
@@ -14,13 +14,12 @@
         <c:param name="scripts"></c:param>
         <c:param name="content">
             <section class="me-4">
-                <h2>学生管理</h2>
-                <div class="new">
-                    <a href="StudentCreate.action">新規登録</a>
-                </div>
-                <form method="get">
+            	<h2>成績参照</h2>
+
+               <form method="get">
                     <div id="filter">
                         <div class="form-group">
+                            <p>科目情報</p>
                             <label for="student-f1-select">入学年度</label>
                             <select id="student-f1-select" name="f1">
                                 <option value="0">--------</option>
@@ -29,7 +28,8 @@
                                 </c:forEach>
                             </select>
                         </div>
-                        <div>
+
+                        <div class="form-group">
                             <label for="student-f2-select">クラス</label>
                             <select id="student-f2-select" name="f2">
                                 <option value="0">--------</option>
@@ -38,20 +38,35 @@
                                 </c:forEach>
                             </select>
                         </div>
-                        <div>
-                            <label for="student-f3-select">科目名</label>
+
+                        <div class="form-group">
+                            <label for="student-f3-select">科目</label>
                             <select id="student-f3-select" name="f3">
                                 <option value="0">--------</option>
-                                <c:forEach var="sub" items="${subs}">
-                                    <option value="${sub.cd}" <c:if test="${sub==f2 }">selected</c:if>>${sub.name}</option>
+                                <c:forEach var="stubject" items="${subs}">
+                                    <option value="${sub.cd}" <c:if test="${sub==f3 }">selected</c:if>>${stubject}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div>
-                            <button id="filter-button">絞込み</button>
+                        <button id="filter-button" type="submit">検索</button>
                         </div>
                     </div>
                 </form>
+
+                <form method="get">
+                    <div id="filter">
+                        <div class="form-group">
+                            <p>学生情報</p>
+                            <label for="student-f4-input">学生番号</label>
+                            <input type="text" id="student-f4-input" name="f4" value="${f4}" maxlength="10" required placeholder="学生番号を入力してください">
+                        </div>
+	                    <div>
+	                        <button id="filter-button" type="submit">検索</button>
+	                    </div>
+                    </div>
+                </form>
+
                 <c:choose>
                     <c:when test="${TLsubs.size()>0}">
                         <div>科目: ${subs.name}</div>
@@ -78,10 +93,15 @@
                             </c:forEach>
                         </table>
                     </c:when>
-                    <c:otherwise>
-                        <div>学生情報が存在しませんでした</div>
-                    </c:otherwise>
+
                 </c:choose>
+
+                <div class="info-message">
+                    <p><label>科目情報を選択または学生情報を入力して検索ボタンをクリックしてください</label></p>
+                </div>
+                <input type="hidden" id="subject-code" name="sj" value="${selectedSubjectCode}">
+                <input type="hidden" id="student-code" name="st" value="${selectedStudentCode}">
+
             </section>
         </c:param>
     </c:import>
