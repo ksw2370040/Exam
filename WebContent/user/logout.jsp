@@ -51,7 +51,7 @@
     	<p>ログアウトしました</p>
     </div>
     <div class= "logout2">
-    	<p><a href="../user/Login.action">ログイン</a></p>
+    	<p><a href="login.jsp">ログイン</a></p>
     </div>
     <footer>
         <p>© 2023 TIC</p>
