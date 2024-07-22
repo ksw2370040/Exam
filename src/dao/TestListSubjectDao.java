@@ -67,6 +67,7 @@ public class TestListSubjectDao extends Dao{
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet rSet = null;
+		try{
 		statement = connection.prepareStatement(baseSql);
 		statement.setString(1, school.getCd());
 		statement.setInt(2, entYear);
@@ -74,8 +75,24 @@ public class TestListSubjectDao extends Dao{
 		statement.setString(4, school.getCd());
 		rSet = statement.executeQuery();
 		list = postFilter(rSet);
-
-		return list;
+		}catch (Exception e){
+			throw e;
+		}finally{
+			if (statement != null){
+				try{
+					statement.close();
+				}catch (SQLException sqle){
+					throw sqle;
+				}
+			}
+			if (connection != null){
+				try{
+					connection.close();
+				}catch (SQLException sqle){
+					throw sqle;
+				}
+			}
+		}
+	return list;
 	}
 }
-

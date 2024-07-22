@@ -18,11 +18,12 @@ public class SubjectCreateAction extends Action{
 
 			Util util=new Util();
 			Teacher teacher =util.getUser(req);
+			String cd = req.getParameter("cd");
 
 			SubjectDao subjectDao= new SubjectDao();
 
 
-			List<Subject> list = subjectDao.filter(teacher.getSchool());
+			List<Subject> list = subjectDao.filter(teacher.getSchool(),cd);
 
 			req.setAttribute("subjects", list);
 			req.getRequestDispatcher("../subject/subject_add.jsp").forward(req, res);
