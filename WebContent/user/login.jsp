@@ -1,5 +1,4 @@
-<%@page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +10,14 @@
             position: relative;
             margin-bottom: 20px;
         }
-
         .form-group input {
             width: 100%;
-            height: 50px;
-            padding: 20px 10px 10px 10px; /* Adjust padding to make space for the label inside the input */
+            height: 60px;
+            padding: 20px 10px 10px 10px;
             box-sizing: border-box;
-            border-radius: 10px; /* Add this line to make the corners round */
+            border-radius: 10px;
             border: 1px solid #ccc;
         }
-
         .form-group label {
             position: absolute;
             top: 0;
@@ -31,7 +28,6 @@
             font-size: 12px;
             transition: 0.2s;
         }
-
         .form-group input:focus + label,
         .form-group input:not(:placeholder-shown) + label {
             top: -10px;
@@ -39,24 +35,32 @@
             font-size: 10px;
             color: #333;
         }
-        footer{
+        footer {
             position: fixed;
             bottom: 0;
             height: 50px;
         }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
-
 <body>
-
 <header>
     <h1>得点管理システム</h1>
 </header>
-<p></p>
 <div class="box-container">
     <div class="login-box">
         <h2>ログイン</h2>
         <form action="../user/LoginExecute.action" method="post">
+            <%
+                String loginError = (String) request.getAttribute("loginError");
+                if (loginError != null) {
+            %>
+                <div class="error-message"><%= loginError %></div>
+            <% } %>
             <div class="form-group">
                 <input type="text" id="id" name="id" maxlength="20" pattern="[a-zA-Z0-9]+" required placeholder="半角でご入力ください">
                 <label for="id">ID</label>
@@ -70,7 +74,6 @@
         </form>
     </div>
 </div>
-
 <script type="text/javascript">
     function togglePasswordVisibility() {
         var passwordField = document.getElementById("password");
@@ -82,12 +85,9 @@
         }
     }
 </script>
-  <footer>
-        <p>© 2023 TIC</p>
-        <p>大原学園</p>
-    </footer>
-
+<footer>
+    <p>© 2023 TIC</p>
+    <p>大原学園</p>
+</footer>
 </body>
-
 </html>
-
