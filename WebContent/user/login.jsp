@@ -58,11 +58,11 @@
         <h2>ログイン</h2>
         <form action="../user/LoginExecute.action" method="post">
             <div class="form-group">
-                <input type="text" id="id" name="id" maxlength="20" pattern="[a-zA-Z0-9]+" required placeholder=" ">
+                <input type="text" id="id" name="id" maxlength="20" pattern="[a-zA-Z0-9]+" required placeholder="半角でご入力ください">
                 <label for="id">ID</label>
             </div>
             <div class="form-group">
-                <input type="password" name="password" id="password" required placeholder=" ">
+                <input type="password" name="password" id="password" required placeholder="20文字以内の半角英数字でご入力ください">
                 <label for="password">パスワード</label>
             </div>
             <p><input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> パスワードを表示</p>
@@ -90,3 +90,4 @@
 </body>
 
 </html>
+
