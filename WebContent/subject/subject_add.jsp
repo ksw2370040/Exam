@@ -34,10 +34,11 @@
         <c:param name="content">
             <section class="me-4">
                 <h2>科目情報登録</h2>
-                <c:if test="${not empty error}">
-                    <p style="color: red;">${error}</p>
-                </c:if>
-                <form action="subject_add" method="post" onsubmit="return checkDuplicate()">
+			    <c:if test="${not empty error}">
+			        <p style="color: red;">${error}</p>
+			        <c:set var="error" value="${null}" scope="session" />
+			    </c:if>
+                <form action="SubjectCreateExecute.action" method="post" onsubmit="return checkDuplicate()">
                     <div id="filter">
                         <div>
                             <label>科目コード</label>

@@ -19,8 +19,9 @@
 	<table>
 					<tr>
 
-						<td><p>「${subject.name}( ${subject.cd})」を削除してもよろしいですか</td></tr>
-<td><a class="delete-button" href="#" onclick="deleteSubject('${subject.cd}')">削除</a></td>
+						<td><p>「${subject.name}( ${subject.cd})」を削除してもよろしいですか</td>
+						<td><a class="delete-button" href="#" onclick="deleteSubject('${subject.cd}')">削除</a><td>
+					</tr>
 </table>
 <a href="../subject/SubjectList.action">戻る</a>	</section>
 	</c:param>

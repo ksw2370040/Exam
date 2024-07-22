@@ -28,7 +28,7 @@
                 <li><a href="../student/StudentList.action">学生管理</a></li>
                 <li><label for="score">成績管理</label></li>
                 <li><a href="../results/TestRegist2.action" id="score">成績登録</a></li>
-                <li><a href="" id="score">成績参照</a></li>
+                <li><a href="../test/TestList.action" id="score">成績参照</a></li>
 				<li><a href="../subject/SubjectList.action">科目管理</a></li>
 			</ul>
         </nav>

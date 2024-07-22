@@ -2,9 +2,7 @@ package test;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,11 +31,11 @@ public class TestListAction extends Action{
 			String subjectCd=req.getParameter("f3");
 
 			int entYear=0;
+			List<TestListSubject> TLsub=new ArrayList<>();
 			LocalDate todaysDate=LocalDate.now();
 			int year=todaysDate.getYear();
 			TestListSubjectDao TLsubDao=new TestListSubjectDao();
 			ClassNumDao cNumDao=new ClassNumDao();
-			Map<String, String> errors=new HashMap<>();
 
 			List<String> list = cNumDao.filter(teacher.getSchool());
 
@@ -49,10 +47,7 @@ public class TestListAction extends Action{
 
 
 			if (entYear != 0 && !classNum.equals("0")&& !subjectCd.equals("0")){
-				List<TestListSubject> TLsub = TLsubDao.filter(entYear,classNum,subject,teacher.getSchool());
-			}else{
-				errors.put("f1","クラスを指定する場合は入学年度も指定してください");
-				req.setAttribute("errors", errors);
+				TLsub = TLsubDao.filter(entYear,classNum,subject,teacher.getSchool());
 			}
 
 			List<Integer> entYearSet = new ArrayList<>();
@@ -62,13 +57,16 @@ public class TestListAction extends Action{
 			List<Subject> subjectSet = new ArrayList<>();
 			subjectSet = subDao.filter(teacher.getSchool());
 
+
 			req.setAttribute("f1", entYear);
 			req.setAttribute("f2", classNum);
 			req.setAttribute("f3", subject);
-			req.setAttribute("subjectSet", subjectSet);
+			req.setAttribute("TLsubs", TLsub);
+			req.setAttribute("subs", subjectSet);
 			req.setAttribute("class_num_set", list);
 			req.setAttribute("ent_year_set", entYearSet);
-			req.getRequestDispatcher("../student/student_list.jsp").forward(req, res);
+
+			req.getRequestDispatcher("../results/test_list.jsp").forward(req, res);
 		}
 
 }
