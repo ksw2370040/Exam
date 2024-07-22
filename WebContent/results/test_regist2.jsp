@@ -1,13 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="../common/base.jsp">
 
+<!DOCTYPE html>
+<html lang = "ja">
+<head>
+	<meta charset="UTF-8">
+    <title>成績登録</title>
+    <link rel="stylesheet" type="text/css" href="../css/results.css">
+</head>
+<body>
+<c:import url="../common/base.jsp">
 	<c:param name="title"></c:param>
 	<c:param name="scripts"></c:param>
 	<c:param name="content">
 		<section class="me-4">
 			<h2>成績管理</h2>
-
 			<form method="get">
 				<div id="filter">
 					<div id="filter">
@@ -97,3 +104,6 @@
 		</section>
 	</c:param>
 </c:import>
+</body>
+</html>
+
