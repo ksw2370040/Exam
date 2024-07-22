@@ -22,7 +22,6 @@
             studentNoError.style.display = studentNo.value.trim() === '' ? 'block' : 'none';
             studentNameError.style.display = studentName.value.trim() === '' ? 'block' : 'none';
 
-
             return f1Select.value !== '0' && f2Select.value !== '0' && studentNo.value.trim() !== '' && studentName.value.trim() !== '';
         }
     </script>
