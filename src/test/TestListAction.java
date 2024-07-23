@@ -7,66 +7,99 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.School;
+import bean.Student;
 import bean.Subject;
 import bean.Teacher;
+import bean.TestListStudent;
 import bean.TestListSubject;
 import dao.ClassNumDao;
+import dao.StudentDao;
 import dao.SubjectDao;
+import dao.TestListStudentDao;
 import dao.TestListSubjectDao;
 import tool.Action;
 import tool.Util;
 
-public class TestListAction extends Action{
-	public void execute(
-			HttpServletRequest req,HttpServletResponse res
-		)throws Exception{
-			Util util=new Util();
-			Subject subject = new Subject();
-			SubjectDao subDao = new SubjectDao();
+public class TestListAction extends Action {
+    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        Util util = new Util();
+        Student student = new Student();
+        StudentDao stuDao = new StudentDao();
+        Subject subject = new Subject();
+        SubjectDao subDao = new SubjectDao();
+        School school =new School();
 
-			Teacher teacher =util.getUser(req);
+        Teacher teacher = util.getUser(req);
 
-			String entYearStr=req.getParameter("f1");
-			String classNum=req.getParameter("f2");
-			String subjectCd=req.getParameter("f3");
+        String entYearStr = req.getParameter("f1");
+        String classNum = req.getParameter("f2");
+        String subjectCd = req.getParameter("f3");
+        String studentNo = req.getParameter("f4");
 
-			int entYear=0;
-			List<TestListSubject> TLsub=new ArrayList<>();
-			LocalDate todaysDate=LocalDate.now();
-			int year=todaysDate.getYear();
-			TestListSubjectDao TLsubDao=new TestListSubjectDao();
-			ClassNumDao cNumDao=new ClassNumDao();
+        int entYear = 0;
+        List<TestListSubject> TLsubs = new ArrayList<>();
+        List<TestListStudent> TLstus = new ArrayList<>();
 
-			List<String> list = cNumDao.filter(teacher.getSchool());
+        LocalDate todaysDate = LocalDate.now();
+        int year = todaysDate.getYear();
+        TestListSubjectDao TLsubDao = new TestListSubjectDao();
+        TestListStudentDao TLstuDao = new TestListStudentDao();
+        ClassNumDao cNumDao = new ClassNumDao();
 
-			subject.setCd(subjectCd);
-
-			if (entYearStr != null){
-				entYear = Integer.parseInt(entYearStr);
-			}
-
-
-			if (entYear != 0 && !classNum.equals("0")&& !subjectCd.equals("0")){
-				TLsub = TLsubDao.filter(entYear,classNum,subject,teacher.getSchool());
-			}
-
-			List<Integer> entYearSet = new ArrayList<>();
-			for (int i = year - 10; i < year +1; i++){
-				entYearSet.add(i);
-			}
-			List<Subject> subjectSet = new ArrayList<>();
-			subjectSet = subDao.filter(teacher.getSchool());
+        List<String> list = cNumDao.filter(teacher.getSchool());
 
 
-			req.setAttribute("f1", entYear);
-			req.setAttribute("f2", classNum);
-			req.setAttribute("f3", subject);
-			req.setAttribute("TLsubs", TLsub);
-			req.setAttribute("subs", subjectSet);
-			req.setAttribute("class_num_set", list);
-			req.setAttribute("ent_year_set", entYearSet);
+        subject.setCd(subjectCd);
 
-			req.getRequestDispatcher("../results/test_list.jsp").forward(req, res);
-		}
+        student.setNo(studentNo);
+        student.setSchool(teacher.getSchool());
 
+            if (entYearStr != null && !entYearStr.isEmpty()) {
+                entYear = Integer.parseInt(entYearStr);
+            }
+
+            if (entYear != 0 && classNum != null && !classNum.equals("0") && subject != null && !subject.equals("0")) {
+                try {
+                    TLsubs = TLsubDao.filter(entYear, classNum, subject, teacher.getSchool());
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (studentNo != null && !studentNo.equals("0")) {
+                try {
+                    TLstus = TLstuDao.filter(student);
+                    student = stuDao.get(studentNo);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        List<Integer> entYearSet = new ArrayList<>();
+        for (int i = year - 10; i <= year; i++) {
+            entYearSet.add(i);
+        }
+
+        List<Subject> subjectSet = new ArrayList<>();
+        subjectSet = subDao.filter(teacher.getSchool());
+
+
+
+        req.setAttribute("f1", entYear);
+        req.setAttribute("f2", classNum);
+        req.setAttribute("f3", subjectCd);
+        req.setAttribute("f4", studentNo);
+        req.setAttribute("TLsubs", TLsubs);
+        req.setAttribute("TLstus",TLstus);
+        req.setAttribute("stu", student);
+        req.setAttribute("subs", subjectSet);
+        req.setAttribute("class_num_set", list);
+        req.setAttribute("ent_year_set", entYearSet);
+
+        req.getRequestDispatcher("../results/test_list2.jsp").forward(req, res);
+    }
 }

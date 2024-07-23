@@ -49,6 +49,18 @@
                         </div>
                     </div>
                 </form>
+                <form method="get">
+                    <div id="filter">
+                        <div class="form-group">
+                            <label for="student-f1-select">学生番号</label>
+							<input id="subject-name" type="text" name="f4" >
+                        </div>
+                     	<div>
+                            <button id="filter-button">絞込み</button>
+                        </div>
+
+                     </div>
+                </form>
                 <c:choose>
                     <c:when test="${TLsubs.size()>0}">
 					        <c:forEach var="sub" items="${subs}">
@@ -73,14 +85,59 @@
                                     <td>${TLsub.classNum}</td>
                                     <td>${TLsub.studentNo}</td>
                                     <td>${TLsub.studentName}</td>
-                                    <td>${TLsub.points['1']}</td>
-                                    <td>${TLsub.points['2']}</td>
+					                <td>
+					                    <c:forEach var="entry" items="${TLsub.points}">
+					                        <c:if test="${entry.key == 1}">
+					                            <c:if test="${not empty entry}">
+					                            	<c:out value="${entry.value}"/>
+					                   	     	</c:if>
+					                   	     	<c:if test="${empty entry}">
+					                            	<c:out value="-"/>
+					                   	     	</c:if>
+
+					   	                     </c:if>
+					                    </c:forEach>
+					                </td>
+					                <td>
+					                    <c:forEach var="entry" items="${TLsub.points}">
+					                        <c:if test="${entry.key == 2}">
+					                            <c:if test="${not empty entry}">
+					                            	<c:out value="${entry.value}"/>
+					                   	     	</c:if>
+					                   	     	<c:if test="${empty entry}">
+					                            	<c:out value="-"/>
+					                   	     	</c:if>
+
+					   	                     </c:if>
+					                    </c:forEach>
+					                </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:when>
+                    <c:when test="${TLstus.size()>0}">
+					    <div>氏名: ${stu.name}(${stu.no})</div>
+                        <table>
+                            <tr>
+                                <th>科目名</th>
+                                <th>科目コード</th>
+                                <th>回数</th>
+                                <th>点数</th>
+                                <th></th>
+								<th></th>
+							</tr>
+                            <c:forEach var="TLstu" items="${TLstus}">
+                                <tr>
+                                    <td>${TLstu.subjectName}</td>
+                                    <td>${TLstu.subjectCd}</td>
+                                    <td>${TLstu.num}</td>
+                                    <td>${TLstu.point}</td>
                                 </tr>
                             </c:forEach>
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <div>学生情報が存在しませんでした</div>
+                        <div>情報が存在しませんでした</div>
                     </c:otherwise>
                 </c:choose>
             </section>
