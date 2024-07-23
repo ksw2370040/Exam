@@ -14,7 +14,7 @@
 		<section class="me-4">
             <div id="addcomplete">
 				<h2>成績管理</h2>
-				<p>登録が完了しました</p>
+				<p>削除が完了しました</p>
 			</div>
 				<div class="link-container">
 					<p><a href="../results/TestRegist2.action">戻る</a>

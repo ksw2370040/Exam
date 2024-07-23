@@ -230,37 +230,30 @@ public class TestDao extends Dao{
      		int count = 0;
 
      		try{
-     			statement =connection.prepareStatement("delete from test where student_no=? and subject_cd=? and school_cd=? and no=?");
-     			statement.setInt(1, test.getPoint());
-     			statement.setString(2, test.getStudent().getNo());
-     			statement.setString(3, test.getSubject().getCd());
-     			statement.setString(4, test.getSchool().getCd());
-     			statement.setInt(5, test.getNo());
+     			statement =connection.prepareStatement("delete from test where student_no=? and subject_cd=? and school_cd=? and no=? and class_num = ?");
+     			statement.setString(1, test.getStudent().getNo());
+     			statement.setString(2, test.getSubject().getCd());
+     			statement.setString(3, test.getSchool().getCd());
+     			statement.setInt(4, test.getNo());
+     			statement.setString(5, test.getClassNum());
      			statement.executeUpdate();
-     			count = statement.executeUpdate();
-     		}catch (Exception e){
-     			throw e;
-     		}finally{
-     			if (statement != null){
-     				try{
-     					statement.close();
-     				}catch (SQLException sqle){
-     					throw sqle;
-     				}
-     			}
-     			if (connection != null){
-     				try{
-     					connection.close();
-     				}catch (SQLException sqle){
-     					throw sqle;
-     				}
-     			}
-     		}
-     		if(count > 0){
-     			return true;
-     		}else{
-     			return false ;
-     		}
-
-     	}
+                count = statement.executeUpdate();
+                System.out.println(statement);
+            } catch (Exception e) {
+                throw e;
+            } finally {
+                if (statement != null) {
+                    try {
+                        statement.close();
+                    } catch (SQLException sqle) {
+                        throw sqle;
+                    	}
+    	            }
+    		}
+    		if(count > 0){
+    			return true;
+    		}else{
+    			return false ;
+    		}
+        }
      }
