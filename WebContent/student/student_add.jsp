@@ -43,7 +43,7 @@
                                 <option value="${year}" <c:if test="${year==ent_year }">selected</c:if>>${year}</option>
                             </c:forEach>
                         </select>
-                        <div id="f1-error" class="error-message" style="display:none;">選択してください。</div>
+                        <div id="f1-error" class="error-message" style="display:none; color:orange;" >入学年度を選択してください。</div>
                     </div>
                     <div>
                         <label for="student-no">学生番号</label>

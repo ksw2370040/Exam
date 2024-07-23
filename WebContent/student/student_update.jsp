@@ -13,10 +13,9 @@
     });
 </script>
 
-    </head>
-    <body>
+</head>
+<body>
 <c:import url="../common/base.jsp">
-
 	<c:param name="title"></c:param>
 	<c:param name="scripts"></c:param>
 	<c:param name="content">
@@ -63,7 +62,7 @@
 			</form>
 			 <p></p>
             <div>
-                <a href="../menu/menu.jsp">戻る</a>
+                <a href="../student/StudentList.action">戻る</a>
             </div>
     </section>
 	</c:param>
