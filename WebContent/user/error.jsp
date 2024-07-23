@@ -1,23 +1,36 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>エラー</title>
-    <style>
-        .error-message {
-            color: red;
-            font-size: 16px;
-            text-align: center;
-            margin-top: 20%;
-        }
-    </style>
+        <link href="../css/stylesheet.css" rel="stylesheet" />
+
+
 </head>
 <body>
+<header>
+    <h1>得点管理システム</h1>
+</header>
     <div class="error-message">
-        <h2>エラーが発生しました</h2>
-        <p><%= request.getAttribute("errorMessage") %></p>
-        <p><a href="<%= request.getContextPath() %>/user/login.jsp">ログインページに戻る</a></p>
+        <ul class="error-list">
+            <%
+                List<String> errorMessages = (List<String>) request.getAttribute("errorMessages");
+                if (errorMessages != null) {
+                    for (String message : errorMessages) {
+            %>
+                        <li><%= message %></li>
+            <%
+                    }
+                }
+            %>
+        </ul>
+
     </div>
+     <footer>
+        <p>© 2023 TIC</p>
+        <p>大原学園</p>
+    </footer>
 </body>
 </html>
