@@ -24,10 +24,10 @@ h2 {
     padding: 10px 20px; /* タイトルの周りに余白を追加 */
 
 }
+
 .new {
 	text-align: right;
 }
-
 
 /* フォーム全体を囲むスタイル */
 #filter {
@@ -72,10 +72,17 @@ h2 {
 #filter-button:hover {
     background-color: #0056b3; /* ホバー時の背景色 */
 }
-#student-f1-select, #student-f2-select, #student-f3-select, #student-f4-input {
-    width: 250px; /* セレクトボックスの幅を指定 */
+
+#student-f1-select, #student-f2-select {
+    width: 100px; /* セレクトボックスの幅を指定 */
     height: 35px;
     border-radius: 5px; /* 角を丸くする */
     border: 1px solid #ccc; /* 境界線のスタイル */
+}
 
+#student-f3-select, #student-f4-input {
+    width: 220px; /* セレクトボックスの幅を指定 */
+    height: 35px;
+    border-radius: 5px; /* 角を丸くする */
+    border: 1px solid #ccc; /* 境界線のスタイル */
 }

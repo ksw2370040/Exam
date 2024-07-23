@@ -60,6 +60,7 @@
                     </div>
                 </form>
 
+                <%--科目別--%>
                 <c:choose>
                     <c:when test="${TLsubs.size()>0}">
                         <div>科目: ${subs.name}</div>
@@ -86,7 +87,31 @@
                             </c:forEach>
                         </table>
                     </c:when>
+                </c:choose>
 
+                <%--学生別--%>
+                <c:choose>
+                    <c:when test="${TLstu.size()>0}">
+                        <div>氏名: ${stu.name}(${stu.no})</div>
+                        <table>
+                            <tr>
+                                <th>科目名</th>
+                                <th>科目コード</th>
+                                <th>回数</th>
+                                <th>点数</th>
+                                <th></th>
+								<th></th>
+							</tr>
+                            <c:forEach var="TLstu" items="${TLstu}">
+                                <tr>
+                                    <td>${TLstu.}</td>
+                                    <td>${TLstu.}</td>
+                                    <td>${TLstu.}</td>
+                                    <td>${TLstu.}</td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:when>
                 </c:choose>
 
 		</section>
