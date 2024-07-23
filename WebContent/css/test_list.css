@@ -72,7 +72,7 @@ h2 {
 #filter-button:hover {
     background-color: #0056b3; /* ホバー時の背景色 */
 }
-#student-f1-select, #student-f2-select {
+#student-f1-select, #student-f2-select, #student-f3-select, #student-f4-input {
     width: 250px; /* セレクトボックスの幅を指定 */
     height: 35px;
     border-radius: 5px; /* 角を丸くする */
