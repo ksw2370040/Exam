@@ -69,15 +69,15 @@
                 <input type="password" name="password" id="password" required placeholder="20文字以内の半角英数字でご入力ください">
                 <label for="password">パスワード</label>
             </div>
-            <p><input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> パスワードを表示</p>
-            <p><input type="submit" value="ログイン"></p>
+            <p><input type="checkbox" name="chk_d_ps" id="chk_d_ps" onclick="togglePasswordVisibility()"> パスワードを表示</p>
+            <p><input type="submit" name="login" value="ログイン"></p>
         </form>
     </div>
 </div>
 <script type="text/javascript">
     function togglePasswordVisibility() {
         var passwordField = document.getElementById("password");
-        var checkbox = document.getElementById("showPassword");
+        var checkbox = document.getElementById("chk_d_ps");
         if (checkbox.checked) {
             passwordField.type = "text";
         } else {
