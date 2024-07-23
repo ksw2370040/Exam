@@ -53,6 +53,6 @@ public class TestListSubject implements java.io.Serializable {
 	}
 
 	public void putPoint(int key, int value){
-		this.points.put(key, value);
+		points.put(key, value);
 	}
 }
