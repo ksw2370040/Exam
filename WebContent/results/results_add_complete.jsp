@@ -18,7 +18,7 @@
 			</div>
 				<div class="link-container">
 					<p><a href="../results/TestRegist2.action">戻る</a>
-					<a href="../results/TestList.action">成績参照</a></p>
+					<a href="../test/TestList.action">成績参照</a></p>
 				</div>
 		</section>
 	</c:param>
