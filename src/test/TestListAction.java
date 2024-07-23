@@ -28,7 +28,6 @@ public class TestListAction extends Action {
         StudentDao stuDao = new StudentDao();
         Subject subject = new Subject();
         SubjectDao subDao = new SubjectDao();
-        School school =new School();
 
         Teacher teacher = util.getUser(req);
 

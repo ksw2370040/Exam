@@ -95,11 +95,31 @@
 							</c:forEach>
 			            </table>
 			            <button>登録して終了</button>
+
 			        </form>
 			    </c:when>
 			    <c:otherwise>
 			        <div>テストデータが見つかりませんでした。</div>
 			    </c:otherwise>
+			</c:choose>
+
+			<c:choose>
+			    <c:when test="${tests.size() >= 0}">
+					<form action="TestDelete.action" method="get">
+			            <table>
+							<c:forEach var="test" items="${tests}">
+			                    <tr>
+									<td><input type="hidden" name="student_no" value="${test.student.no}" required></td>
+									<td><input type="hidden" name="subject_cd" value="${test.subject.cd}" required></td>
+									<td><input type="hidden" name="class_num" value="${test.classNum}" required></td>
+									<td><input type="hidden" name="test_no" value="${test.no}" required></td>
+									<td><input type="hidden" name="count" value="${tests.size()}" required></td>
+								</tr>
+							</c:forEach>
+			            </table>
+			            <button>削除する</button>
+			        </form>
+			    </c:when>
 			</c:choose>
 		</section>
 	</c:param>
