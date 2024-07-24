@@ -15,9 +15,10 @@
 	<c:param name="content">
 		<section class="me-4">
 			<h2>成績管理</h2>
+
 			<form method="get">
 				<div id="filter">
-					<div id="filter">
+					<div id="form-group">
 						<label for="test-f1-select">入学年度</label>
 						<select id="test-f1-select" name="f1">
 							<option value="0">--------</option>
@@ -26,7 +27,8 @@
 							</c:forEach>
 						</select>
 					</div>
-					<div id="filter">
+
+					<div id="form-group">
 						<label for="test-f2-select">クラス</label>
 						<select id="test-f2-select" name="f2">
 							<option value="0">--------</option>
@@ -35,7 +37,8 @@
 							</c:forEach>
 						</select>
 					</div>
-					<div id="filter">
+
+					<div id="form-group">
 						<label for="test-f3-select">科目名</label>
 						<select id="test-f3-select" name="f3">
 							<option value="0">--------</option>
@@ -44,7 +47,8 @@
 							</c:forEach>
 						</select>
 					</div>
-					<div id="filter">
+
+					<div id="form-group">
 						<label for="test-f4-select">回数</label>
 						<select id="test-f4-select" name="f4">
 							<option value="0">0</option>
@@ -53,18 +57,20 @@
 							</c:forEach>
 						</select>
 					</div>
+
 					<div>
-						<button id="filter-button" type="submit">絞り込み</button>
+						<button id="filter-button" type="submit">検索</button>
 					</div>
+
 					<div>${errors.get("f1")}</div>
 				</div>
 			</form>
+
 			<c:choose>
 			    <c:when test="${tests.size() >= 0}">
 					<form action="TestRegist2Execute.action" method="get">
-			            <div>科目:${subject.name}</div>
 			            <c:set var="test" value="${tests[0]}" />
-    					<div>(${test.no}回)</div>
+    					<div>科目:${subject.name} (${test.no}回)</div>
 
 			            <table>
 			                <tr>
@@ -73,8 +79,6 @@
 			                    <th>学生番号</th>
 			                    <th>氏名</th>
 			                    <th>点数</th>
-			                    <th></th>
-			                    <th></th>
 			                </tr>
 							<c:forEach var="test" items="${tests}">
 			                    <tr>
@@ -90,13 +94,11 @@
 									<td><input type="hidden" name="class_num" value="${test.classNum}" required></td>
 									<td><input type="hidden" name="test_no" value="${test.no}" required></td>
 									<td><input type="hidden" name="count" value="${tests.size()}" required></td>
-
 								</tr>
 							</c:forEach>
 			            </table>
-			            <button>登録して終了</button>
-
-			        </form>
+					<button id="filter-button" type="submit">登録して終了</button>
+					</form>
 			    </c:when>
 			    <c:otherwise>
 			        <div>テストデータが見つかりませんでした。</div>
