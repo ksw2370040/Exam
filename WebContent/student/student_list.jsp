@@ -58,8 +58,7 @@
                                 <th>学生番号</th>
                                 <th>氏名</th>
                                 <th>クラス</th>
-                                <th>在学中</th>
-                                <th></th>
+                                <th class="center">在学中</th>
                                 <th></th>
                             </tr>
                             <c:forEach var="student" items="${students}">
@@ -68,7 +67,7 @@
                                     <td>${student.no}</td>
                                     <td>${student.name}</td>
                                     <td>${student.classNum}</td>
-                                    <td>
+                                    <td class="center">
                                         <c:choose>
                                             <c:when test="${student.isAttend()}">
                                                 〇
