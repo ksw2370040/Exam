@@ -28,6 +28,7 @@
 								</tr>
 							</c:forEach>
 			            </table>
+			            <p>本当に削除しますか</p>
 			            <button>削除する</button>
 			        </form>
 			    </c:when>

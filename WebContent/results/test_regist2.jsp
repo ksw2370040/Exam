@@ -67,7 +67,7 @@
 			</form>
 
 			<c:choose>
-			    <c:when test="${tests.size() >= 0}">
+			    <c:when test="${tests.size() > 0}">
 					<form action="TestRegist2Execute.action" method="get">
 			            <c:set var="test" value="${tests[0]}" />
     					<div>科目:${subject.name} (${test.no}回)</div>
@@ -106,7 +106,7 @@
 			</c:choose>
 
 			<c:choose>
-			    <c:when test="${tests.size() >= 0}">
+			    <c:when test="${tests.size() > 0}">
 					<form action="TestDelete.action" method="get">
 			            <table>
 							<c:forEach var="test" items="${tests}">

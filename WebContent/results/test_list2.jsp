@@ -74,8 +74,8 @@
                                 <th>クラス</th>
                                 <th>学生番号</th>
                                 <th>氏名</th>
-                                <th>１回目</th>
-                                <th>２回目</th>
+                                <th>１回</th>
+                                <th>２回</th>
                                 <th></th>
 								<th></th>
 							</tr>
@@ -86,30 +86,32 @@
                                     <td>${TLsub.studentNo}</td>
                                     <td>${TLsub.studentName}</td>
 					                <td>
-					                    <c:forEach var="entry" items="${TLsub.points}">
-					                        <c:if test="${entry.key == 1}">
-					                            <c:if test="${not empty entry}">
-					                            	<c:out value="${entry.value}"/>
-					                   	     	</c:if>
-					                   	     	<c:if test="${empty entry}">
-					                            	<c:out value="-"/>
-					                   	     	</c:if>
-
-					   	                     </c:if>
-					                    </c:forEach>
+									    <c:forEach var="entry" items="${TLsub.points}">
+									        <c:if test="${entry.key == 1}">
+									            <c:choose>
+									                <c:when test="${entry.value == 0}">
+									                    <c:out value="-"/>
+									                </c:when>
+									                <c:otherwise>
+									                    <c:out value="${entry.value}"/>
+									                </c:otherwise>
+									            </c:choose>
+									        </c:if>
+									    </c:forEach>
 					                </td>
 					                <td>
-					                    <c:forEach var="entry" items="${TLsub.points}">
-					                        <c:if test="${entry.key == 2}">
-					                            <c:if test="${not empty entry}">
-					                            	<c:out value="${entry.value}"/>
-					                   	     	</c:if>
-					                   	     	<c:if test="${empty entry}">
-					                            	<c:out value="-"/>
-					                   	     	</c:if>
-
-					   	                     </c:if>
-					                    </c:forEach>
+									    <c:forEach var="entry" items="${TLsub.points}">
+									        <c:if test="${entry.key == 2}">
+									            <c:choose>
+									                <c:when test="${entry.value == 0}">
+									                    <c:out value="-"/>
+									                </c:when>
+									                <c:otherwise>
+									                    <c:out value="${entry.value}"/>
+									                </c:otherwise>
+									            </c:choose>
+									        </c:if>
+									    </c:forEach>
 					                </td>
                                 </tr>
                             </c:forEach>
