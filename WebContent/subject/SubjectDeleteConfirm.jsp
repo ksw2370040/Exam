@@ -16,13 +16,16 @@
 	<c:param name="content">
 	<section class="me-4">
 	<h2>科目削除確認</h2>
-	<table>
-					<tr>
 
-						<td><p>「${subject.name}( ${subject.cd})」を削除してもよろしいですか</td>
-						<td><a class="delete-button" href="#" onclick="deleteSubject('${subject.cd}')">削除</a><td>
-					</tr>
-</table>
+
+
+						<p>「${subject.name}( ${subject.cd})」を削除してもよろしいですか</p><br>
+
+
+						<a class="delete-button" href="#" onclick="deleteSubject('${subject.cd}')">削除</a><br>
+
+
+
 <a href="../subject/SubjectList.action">戻る</a>	</section>
 	</c:param>
 </c:import>

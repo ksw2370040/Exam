@@ -12,7 +12,7 @@
 	<c:param name="content">
 	<section class="me-4">
 <div id="addcomplete">
-		<h2>学生情報変更</h2>
+		<h2>学生情報削除</h2>
 		<p>削除が完了しました</p>
 <a href="../subject/SubjectList.action">科目一覧</a>
 	</div>

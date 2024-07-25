@@ -77,32 +77,32 @@ h2{
 	margin-top: 150px;
 }
 
-table {
+#list-table table {
     width: 95%;
     border-collapse: collapse; /* ボーダーの隙間をなくす */
     border-top: none; /* テーブル全体の上側のボーダーを削除 */
 }
 
-table th, table td {
+#list-table table th, table td {
     border-top: 1px solid #ddd; /* 上側のセル境界線 */
     border-bottom: 1px solid #ddd; /* 下側のセル境界線 */
     padding: 12px; /* セルの内側余白を広くする */
     text-align: left; /* テキストの左揃え */
 }
 
-table th {
+#list-table table th {
     font-weight: bold; /* ヘッダーのテキストを太字に */
     border-top: none; /* ヘッダーセルの上側のボーダーを削除 */
 }
 
-table th:nth-child(2), table td:nth-child(2) {
+#list-table table th:nth-child(2), table td:nth-child(2) {
     width: 400px;
 }
 
-table th:nth-child(3), table td:nth-child(3) {
+#list-table table th:nth-child(3), table td:nth-child(3) {
     width: 100px;
 }
 
-table th:nth-child(4), table td:nth-child(4) {
+#list-table table th:nth-child(4), table td:nth-child(4) {
     width: 100px;
 }

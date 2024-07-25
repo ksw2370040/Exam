@@ -23,6 +23,7 @@
 			<div class= "new">
 				<a href="SubjectCreate.action">新規登録</a>
 			</div>
+			<div class"list-table>
 			<table>
 				<tr>
 					<th>科目コード</th>
@@ -39,6 +40,7 @@
 					</tr>
 				</c:forEach>
 			</table>
+			</div>
 		</section>
 	</c:param>
 </c:import>
