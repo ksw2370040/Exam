@@ -76,7 +76,9 @@
                                 <button id="filter-button" type="submit">検索</button>
                             </div>
                         </div>
-                        <div id="selection-error" class="error-message" style="display:none; color:orange;">入学年度とクラスの両方を選択してください。</div>
+                        <c:if test="${not empty param.f1 or not empty param.f2 or not empty param.f3}">
+                    		<div id="selection-error" class="error-message" style=" color:orange;">${errors.get("f1")}</div>
+                    	</c:if>
                     </form>
                     <hr>
 
@@ -88,12 +90,18 @@
                             <div class="form-group2">
                                 <label for="student-f1-select2">学生番号</label>
                                 <input id="subject-name" type="text" name="f4" placeholder="学生番号を入力してください" >
+
                             </div>
+
                             <div>
                                 <button id="filter-button2" type="submit">検索</button>
                             </div>
                         </div>
+                        <c:if test="${not empty errors.f4}">
+		                    <div id="selection-error" class="error-message" style=" color:orange;">${errors.get("f4")}</div>
+						</c:if>
                     </form>
+
                 </div>
                 <c:choose>
                     <c:when test="${TLsubs.size() > 0}">
@@ -175,11 +183,14 @@
                         </div>
                     </c:when>
                     <c:otherwise>
+                        <c:if test="${not empty param.f1 or not empty param.f2 or not empty param.f3 or not empty param.f4 }">
+
                         <div id="info-message" class="info-message">
                             <p>科目情報を選択または学生情報を入力して検索ボタンをクリックしてください</p>
                         </div>
-                        <c:if test="${not empty param.f1 or not empty param.f2 or not empty param.f3 or not empty param.f4}">
-                            <div id="no-data-message" class="info-message2">
+                        </c:if>
+                        <c:if test="${not empty TLstus or not empty TLsubs}">
+                        	<div id="no-data-message" class="info-message2">
                                 <p>学生情報は存在しませんでした</p>
                             </div>
                         </c:if>

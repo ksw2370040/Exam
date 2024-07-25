@@ -2,12 +2,13 @@ package results;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.School;
 import bean.Student;
 import bean.Subject;
 import bean.Teacher;
@@ -47,6 +48,8 @@ public class TestListAction extends Action {
         ClassNumDao cNumDao = new ClassNumDao();
 
         List<String> list = cNumDao.filter(teacher.getSchool());
+		Map<String, String> errors=new HashMap<>();
+
 
 
         subject.setCd(subjectCd);
@@ -58,7 +61,7 @@ public class TestListAction extends Action {
                 entYear = Integer.parseInt(entYearStr);
             }
 
-            if (entYear != 0 && classNum != null && !classNum.equals("0") && subject != null && !subject.equals("0")) {
+            if (entYear != 0 && !classNum.equals("0") && !subject.equals("0")) {
                 try {
                     TLsubs = TLsubDao.filter(entYear, classNum, subject, teacher.getSchool());
 
@@ -66,17 +69,28 @@ public class TestListAction extends Action {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }else{
+				errors.put("f1","入学年度とクラスと科目を選択してください。");
+
+				req.setAttribute("errors", errors);
+
             }
 
-            if (studentNo != null && !studentNo.equals("0")) {
+            if (studentNo != null && !studentNo.equals("0") ) {
                 try {
+                	if (studentNo ==""){
+        				errors.put("f4","学生番号を指定してください");
+
+        				req.setAttribute("errors", errors);
+
+                	}else{
                     TLstus = TLstuDao.filter(student);
                     student = stuDao.get(studentNo);
-
+                	}
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
-            }
+                }}
+
 
         List<Integer> entYearSet = new ArrayList<>();
         for (int i = year - 10; i <= year; i++) {
