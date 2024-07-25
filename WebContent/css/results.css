@@ -57,7 +57,7 @@ h2 {
 
 /* ボタンのスタイル */
 #filter-button {
-    padding: 10px 20px; /* ボタンのパディングを設定 */
+    padding: 7px 14px; /* ボタンのパディングを設定 */
     background-color: #007BFF; /* ボタンの背景色 */
     color: white; /* ボタンの文字色 */
     border: none; /* ボタンの境界線をなくす */
@@ -101,4 +101,3 @@ table th {
     font-weight: bold; /* ヘッダーのテキストを太字に */
     border-top: none; /* ヘッダーセルの上側のボーダーを削除 */
 }
-
