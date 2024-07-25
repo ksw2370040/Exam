@@ -13,16 +13,22 @@ import bean.Test;
 
 public class TestDao extends Dao{
 	private String baseSql =
-			"SELECT a.no AS student_no, "+
-     		       " subject.cd AS subject_cd, "+
-     		       " a.school_cd AS school_cd, "+
-     		       " COALESCE(test.no, ?) AS no, "+
-     		       " COALESCE(test.point, 0) AS point, "+
-     		       " a.class_num AS class_num "+
-     		" FROM STUDENT AS a "+
-     		" LEFT JOIN TEST ON TEST.STUDENT_NO = a.NO "+
-     		" LEFT JOIN SUBJECT ON SUBJECT.SCHOOL_CD = a.SCHOOL_CD "+
-     		" WHERE a.SCHOOL_CD = ? ";
+			"SELECT a.no AS student_no, " +
+		               "subject.cd AS subject_cd, " +
+		               "a.school_cd AS school_cd, " +
+		               "CASE " +
+		               "    WHEN test.no <> ? THEN ? " +
+		               "    ELSE test.no " +
+		               "END AS no, " +
+		               "CASE " +
+		               "    WHEN test.no <> ? THEN 0 " +
+		               "    ELSE test.point " +
+		               "END AS point, " +
+		               "a.class_num AS class_num " +
+		               "FROM STUDENT AS a " +
+		               "LEFT JOIN TEST ON a.NO = TEST.STUDENT_NO " +
+		               "LEFT JOIN SUBJECT ON a.SCHOOL_CD = SUBJECT.SCHOOL_CD " +
+		               "WHERE a.SCHOOL_CD = ? ";
 
      	public Test get(Student student,Subject subject,School school,int no) throws Exception{
      		Test test = new Test();
@@ -105,17 +111,17 @@ public class TestDao extends Dao{
      		Connection connection = getConnection();
      		PreparedStatement statement = null;
      		ResultSet rSet = null;
-             String condition = " AND a.ENT_YEAR =? AND a.CLASS_NUM = ? AND SUBJECT.CD = ? AND COALESCE(TEST.NO, ?) = ?";
+             String condition = " AND a.ENT_YEAR =? AND a.CLASS_NUM = ? AND SUBJECT.CD = ?";
 
      		try{
      			statement = connection.prepareStatement(baseSql +" "+ condition );
      			statement.setInt(1, num);
-     			statement.setString(2, school.getCd());
-     			statement.setInt(3, entYear);
-     			statement.setString(4, classNum);
-     			statement .setString(5, subject.getCd());
-     			statement.setInt(6, num);
-     			statement.setInt(7, num);
+     			statement.setInt(2, num);
+     			statement.setInt(3, num);
+     			statement.setString(4, school.getCd());
+     			statement.setInt(5, entYear);
+     			statement.setString(6, classNum);
+     			statement .setString(7, subject.getCd());
      			rSet = statement.executeQuery();
      			list = postFilter(rSet, school);
      		}catch (Exception e){

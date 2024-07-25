@@ -1,5 +1,6 @@
 package results;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +24,9 @@ public class TestRegist2Action extends Action{
 		Subject subject = new Subject();
 		StudentDao stuDao = new StudentDao();
 		SubjectDao subDao= new SubjectDao();
-		List<Student> students= null;
+		List<Student> students= new ArrayList<>();
 		TestDao tDao = new TestDao();
-		List<Test> tests = null;
+		List<Test> tests = new ArrayList<>();
 			Teacher teacher =util.getUser(req);
 
 			String entYearStr=req.getParameter("f1");

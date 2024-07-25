@@ -1,4 +1,4 @@
-package test;
+package results;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.School;
 import bean.Student;
 import bean.Subject;
 import bean.Teacher;
