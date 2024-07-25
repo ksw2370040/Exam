@@ -23,7 +23,6 @@
 			<div class= "new">
 				<a href="SubjectCreate.action">新規登録</a>
 			</div>
-			<div class"list-table>
 			<table>
 				<tr>
 					<th>科目コード</th>
