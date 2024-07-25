@@ -17,10 +17,9 @@ section {
 h2 {
     font-size: 24px;
     background-color: #bbbbbb; /* 背景色を設定 */
-
     padding: 10px 20px; /* タイトルの周りに余白を追加 */
-
 }
+
 .new {
 	text-align: right;
 }
@@ -57,7 +56,7 @@ h2 {
 
 /* ボタンのスタイル */
 #filter-button {
-    padding: 10px 20px; /* ボタンのパディングを設定 */
+    padding: 7px 14px; /* ボタンのパディングを設定 */
     background-color: #007BFF; /* ボタンの背景色 */
     color: white; /* ボタンの文字色 */
     border: none; /* ボタンの境界線をなくす */
@@ -100,5 +99,25 @@ table th, table td {
 table th {
     font-weight: bold; /* ヘッダーのテキストを太字に */
     border-top: none; /* ヘッダーセルの上側のボーダーを削除 */
+}
+
+table th:nth-child(1), table td:nth-child(1) {
+    width: 300px;
+}
+
+table th:nth-child(2), table td:nth-child(2) {
+    width: 200px;
+}
+
+table th:nth-child(3), table td:nth-child(3) {
+    width: 200px;
+}
+
+table th:nth-child(4), table td:nth-child(4) {
+    width: 300px;
+}
+
+table th:nth-child(5), table td:nth-child(5) {
+    width: 350px;
 }
 
