@@ -15,19 +15,20 @@ import bean.TestListSubject;
 
 public class TestListSubjectDao extends Dao {
     private String baseSql = "SELECT DISTINCT " +
-            "STUDENT.ENT_YEAR as ent_year, " +
-            "STUDENT.NO AS student_no, " +
-            "STUDENT.NAME AS student_name, " +
-            "STUDENT.class_num AS class_num, " +
-            "TEST1.point as point1, " +
-            "TEST2.point as point2 " +
-            "FROM STUDENT " +
-            "LEFT JOIN TEST AS TEST1 ON TEST1.STUDENT_NO = STUDENT.NO AND TEST1.no = 1 " +
-            "LEFT JOIN TEST AS TEST2 ON TEST2.STUDENT_NO = STUDENT.NO AND TEST2.no = 2 " +
-            "WHERE STUDENT.SCHOOL_CD = ? " +
-            "AND STUDENT.ENT_YEAR = ? " +
-            "AND STUDENT.CLASS_NUM = ? " +
-            "AND TEST1.SUBJECT_CD = ?";
+    	    "STUDENT.ENT_YEAR as ent_year, " +
+    	    "STUDENT.NO AS student_no, " +
+    	    "STUDENT.NAME AS student_name, " +
+    	    "STUDENT.class_num AS class_num, " +
+    	    "TEST1.point as point1, " +
+    	    "TEST2.point as point2 " +
+    	    "FROM STUDENT " +
+    	    "LEFT JOIN TEST AS TEST1 ON TEST1.STUDENT_NO = STUDENT.NO AND TEST1.no = 1 " +
+    	    "LEFT JOIN TEST AS TEST2 ON TEST2.STUDENT_NO = STUDENT.NO AND TEST2.no = 2 " +
+    	    "LEFT JOIN SUBJECT ON SUBJECT.SCHOOL_CD = STUDENT.SCHOOL_CD " +
+    	    "WHERE STUDENT.SCHOOL_CD = ? " +
+    	    "AND STUDENT.ENT_YEAR = ? " +
+    	    "AND STUDENT.CLASS_NUM = ? " +
+    	    "AND SUBJECT.CD = ?";
 
     private List<TestListSubject> postFilter(ResultSet rSet) throws Exception {
         List<TestListSubject> list = new ArrayList<>();

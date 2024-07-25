@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* ベースのスタイル */
 body {
     font-family: Arial, sans-serif;
@@ -7,7 +5,6 @@ body {
     padding: 0;
     background-color: #f9f9f9;
 }
-
 
 /* セクションスタイル */
 section {
@@ -27,7 +24,6 @@ h2 {
 .new {
 	text-align: right;
 }
-
 
 /* フォーム全体を囲むスタイル */
 #filter {
@@ -72,10 +68,41 @@ h2 {
 #filter-button:hover {
     background-color: #0056b3; /* ホバー時の背景色 */
 }
+
 #student-f1-select, #student-f2-select {
     width: 250px; /* セレクトボックスの幅を指定 */
     height: 35px;
     border-radius: 5px; /* 角を丸くする */
     border: 1px solid #ccc; /* 境界線のスタイル */
 
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse; /* ボーダーの隙間をなくす */
+    border-top: none; /* テーブル全体の上側のボーダーを削除 */
+}
+
+table th, table td {
+    border-top: 1px solid #ddd; /* 上側のセル境界線 */
+    border-bottom: 1px solid #ddd; /* 下側のセル境界線 */
+    padding: 12px; /* セルの内側余白を広くする */
+    text-align: left; /* テキストの左揃え */
+}
+
+table th {
+    font-weight: bold; /* ヘッダーのテキストを太字に */
+    border-top: none; /* ヘッダーセルの上側のボーダーを削除 */
+}
+
+table th:nth-child(3), table td:nth-child(3) {
+    width: 250px;
+}
+
+/* クラス列の横幅を狭くする */
+table th:nth-child(4), table td:nth-child(4) {
+    width: 100px;
+}
+.center {
+    text-align: center;
 }
