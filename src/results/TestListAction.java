@@ -23,7 +23,7 @@ import tool.Action;
 import tool.Util;
 
 public class TestListAction extends Action {
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
         Util util = new Util();
         Student student = new Student();
         StudentDao stuDao = new StudentDao();
@@ -52,6 +52,7 @@ public class TestListAction extends Action {
 
 
 
+
         subject.setCd(subjectCd);
 
         student.setNo(studentNo);
@@ -68,28 +69,26 @@ public class TestListAction extends Action {
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
-            }else{
-				errors.put("f1","入学年度とクラスと科目を選択してください。");
 
+                }
+            }else if (studentNo != null && !studentNo.equals("0") ) {
+                try {
+                    TLstus = TLstuDao.filter(student);
+                    student = stuDao.get(studentNo);
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }}else{
+
+				errors.put("f1","入学年度とクラスと科目を選択してください。");
 				req.setAttribute("errors", errors);
+                req.setAttribute("nosearch", true);
+
 
             }
 
-            if (studentNo != null && !studentNo.equals("0") ) {
-                try {
-                	if (studentNo ==""){
-        				errors.put("f4","学生番号を指定してください");
 
-        				req.setAttribute("errors", errors);
-
-                	}else{
-                    TLstus = TLstuDao.filter(student);
-                    student = stuDao.get(studentNo);
-                	}
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }}
 
 
         List<Integer> entYearSet = new ArrayList<>();
@@ -99,6 +98,7 @@ public class TestListAction extends Action {
 
         List<Subject> subjectSet = new ArrayList<>();
         subjectSet = subDao.filter(teacher.getSchool());
+
 
 
 

@@ -24,6 +24,25 @@
 
             return f1Select.value !== '0' && f2Select.value !== '0' && studentNo.value.trim() !== '' && studentName.value.trim() !== '';
         }
+        const existingCodes = [
+            <c:forEach var="code" items="${existingSubjectCodes}">
+                "${code}"<c:if test="${!status.last}">,</c:if>
+            </c:forEach>
+        ];
+
+        console.log(existingCodes);
+
+        function checkDuplicate() {
+            const inputCode = document.getElementById("student-no").value;
+
+            if (existingCodes.includes(inputCode)) {
+                alert("この学生番号は既に存在します。");
+                return false;
+            }
+
+            return true;
+        }
+
     </script>
 </head>
 <body>
@@ -33,6 +52,11 @@
     <c:param name="content">
         <section class="me-4">
             <h2>学生情報登録</h2>
+         	<c:if test="${not empty error}">
+			        <p style="color: red;">${error}</p>
+			        <c:set var="error" value="${null}" scope="session" />
+			</c:if>
+
             <form action="StudentCreateExecute.action" method="get" onsubmit="return validateForm()">
                 <div id="filter">
                     <div>

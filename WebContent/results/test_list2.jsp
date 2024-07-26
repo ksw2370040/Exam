@@ -10,6 +10,18 @@
         function hideInfoMessage() {
             var infoMessage = document.getElementById('info-message');
             infoMessage.style.display = 'none';
+
+            var inputField = document.getElementById('subject-name');
+            var errorMessage = document.getElementById('error-message');
+
+            if (inputField.value.trim() === '') {
+                errorMessage.style.display = 'block';
+                return false; // フォームの送信を停止
+            } else {
+                errorMessage.style.display = 'none';
+                return true; // フォームの送信を続行
+            }
+
         }
 
         function validateForm() {
@@ -39,7 +51,6 @@
                 <h2>成績参照 <c:if test="${TLsubs.size() > 0}">（科目）</c:if></h2>
                 <div id="box">
                     <form method="get" onsubmit="hideInfoMessage(); return validateForm();">
-
                         <div id="filter">
                             <div class="label-group">
                                 <p>科目情報</p>
@@ -77,8 +88,8 @@
                             </div>
                         </div>
                         <c:if test="${not empty param.f1 or not empty param.f2 or not empty param.f3}">
-                    		<div id="selection-error" class="error-message" style=" color:orange;">${errors.get("f1")}</div>
-                    	</c:if>
+                            <div id="selection-error" class="error-message" style=" color:orange;">${errors.get("f1")}</div>
+                        </c:if>
                     </form>
                     <hr>
 
@@ -89,28 +100,32 @@
                             </div>
                             <div class="form-group2">
                                 <label for="student-f1-select2">学生番号</label>
-                                <input id="subject-name" type="text" name="f4" placeholder="学生番号を入力してください" >
-
+                                <input id="subject-name" type="text" name="f4" placeholder="学生番号を入力してください" required>
                             </div>
 
                             <div>
                                 <button id="filter-button2" type="submit">検索</button>
                             </div>
                         </div>
-                        <c:if test="${not empty errors.f4}">
-		                    <div id="selection-error" class="error-message" style=" color:orange;">${errors.get("f4")}</div>
-						</c:if>
                     </form>
-
                 </div>
+
+				<c:if test="${not empty f4}">
+						    <c:if test="${stu.no == f4}">
+                        		<div>氏名: ${stu.name}(${stu.no})</div>
+                            </c:if>
+				</c:if>
+
                 <c:choose>
                     <c:when test="${TLsubs.size() > 0}">
-                        <!-- 科目情報がある場合の表示 -->
                         <c:forEach var="sub" items="${subs}">
                             <c:if test="${sub.cd == f3}">
                                 <div>科目: ${sub.name}</div>
                             </c:if>
                         </c:forEach>
+
+
+                        <!-- 科目情報がある場合の表示 -->
                         <div class="subject-table">
                             <table>
                                 <tr>
@@ -162,7 +177,6 @@
                     </c:when>
                     <c:when test="${TLstus.size() > 0}">
                         <!-- 学生情報がある場合の表示 -->
-                        <div>氏名: ${stu.name}(${stu.no})</div>
                         <div class="subject-table2">
                             <table>
                                 <tr>
@@ -182,16 +196,27 @@
                             </table>
                         </div>
                     </c:when>
-                    <c:otherwise>
-                        <c:if test="${not empty param.f1 or not empty param.f2 or not empty param.f3 or not empty param.f4 }">
-
-                        <div id="info-message" class="info-message">
-                            <p>科目情報を選択または学生情報を入力して検索ボタンをクリックしてください</p>
-                        </div>
-                        </c:if>
-                        <c:if test="${not empty TLstus or not empty TLsubs}">
-                        	<div id="no-data-message" class="info-message2">
+                        <c:when test="${not empty f4 }">
+                        	<c:if test="${TLstus.size() == 0 }">
+                            <div id="no-data-message" class="info-message2">
                                 <p>学生情報は存在しませんでした</p>
+                            </div>
+                            </c:if>
+                        </c:when>
+					    <c:when test="${not empty f1 and f1 > '0' and not empty f2 and f2 > '0' and not empty f3 and f3 > '0'}">
+					        <c:if test="${TLstus.size() == 0 }">
+					            <div id="no-data-message" class="info-message2">
+					                <p>学生情報は存在しませんでした</p>
+					            </div>
+					        </c:if>
+					    </c:when>
+
+                    <c:otherwise>
+
+                        <!-- メッセージの表示条件を追加 -->
+                        <c:if test="${not empty nosearch}">
+                            <div id="no-data-message" class="info-message">
+                                <p>科目情報を選択または学生情報を入力して検索ボタンをクリックしてください</p>
                             </div>
                         </c:if>
                     </c:otherwise>

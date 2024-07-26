@@ -1,5 +1,8 @@
 package student;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,6 +18,10 @@ public class StudentCreateExecuteAction extends Action{
 			HttpServletRequest req,HttpServletResponse res
 		)throws Exception{
 		HttpSession session = req.getSession();
+    	boolean exists = true;
+    	List<Student> students = new ArrayList<>();
+    	StudentDao studentDao = new StudentDao();
+
 
 		Teacher teacher =(Teacher) session.getAttribute("user");
 		Integer entYear = Integer.parseInt(req.getParameter("ent_year"));
@@ -23,6 +30,18 @@ public class StudentCreateExecuteAction extends Action{
 		String classNum = req.getParameter("class_num");
 		boolean isAttend = true;
 		School school= teacher.getSchool();
+
+    	students = studentDao.filter(school, isAttend);
+
+
+        exists = students.stream().anyMatch(student -> student.getNo().equals(No));
+
+        if (exists) {
+            session.setAttribute("error", "この学生番号は既に存在します。");
+            // エラーメッセージを表示するためにリダイレクト
+            req.getRequestDispatcher("../student/StudentCreate.action").forward(req, res);
+
+        } else {
 
 		Student student =new Student();
 		student.setEntYear(entYear);
@@ -35,6 +54,7 @@ public class StudentCreateExecuteAction extends Action{
 		StudentDao dao = new StudentDao();
 		dao.save(student);
 		req.getRequestDispatcher("../student/student_add_complete.jsp").forward(req, res);
+		}
 
 
 
