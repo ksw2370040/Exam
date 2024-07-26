@@ -26,12 +26,12 @@
 					<div>
 						<label>入学年度</label>
 						<p>${student.entYear}</p>
-						<input id="radius" type="hidden" name="ent_year" value="${student.entYear}" required><br>
+						<input id="radius" type="hidden" name="ent_year" value="${student.entYear}" required>
 					</div>
 					<div>
 						<label>学生番号</label>
 						<p>${student.no}</p>
-						<input id="radius" type="hidden" name="no" value="${student.no}" required><br>
+						<input id="radius" type="hidden" name="no" value="${student.no}" required>
 
 					</div>
 					<div>

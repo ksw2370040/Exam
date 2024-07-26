@@ -20,7 +20,7 @@
 					<div>
 						<label>科目コード</label>
 						<p>&ensp;&ensp;${subject.cd}</p>
-						<input id="radius" type="hidden" name="cd" value="${subject.cd}" required><br>
+						<input id="radius" type="hidden" name="cd" value="${subject.cd}" required>
 					</div>
 					<div>
 						<label>科目名</label>
