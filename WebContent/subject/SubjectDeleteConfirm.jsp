@@ -19,10 +19,10 @@
 
 
 
-						<p>「${subject.name}( ${subject.cd})」を削除してもよろしいですか</p><br>
+						<p>「${subject.name}( ${subject.cd})」を削除してもよろしいですか</p>
 
 
-						<a class="delete-button" href="#" onclick="deleteSubject('${subject.cd}')">削除</a><br>
+						<a class="delete-button" href="#" onclick="deleteSubject('${subject.cd}')">削除</a><br><br><br><br>
 
 
 
