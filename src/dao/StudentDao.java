@@ -181,6 +181,36 @@ public class StudentDao extends Dao{
 			}
 		}
 		return list;
+	}	public List<Student> filter(School school) throws Exception{
+		List<Student> list =new ArrayList<>();
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet rSet = null;
+		String order = " order by no asc";
+		try{
+			statement = connection.prepareStatement(baseSql +" "+ order);
+			statement.setString(1, school.getCd());
+			rSet = statement.executeQuery();
+			list = postFilter(rSet, school);
+		}catch (Exception e){
+			throw e;
+		}finally{
+			if (statement != null){
+				try{
+					statement.close();
+				}catch (SQLException sqle){
+					throw sqle;
+				}
+			}
+			if (connection != null){
+				try{
+					connection.close();
+				}catch (SQLException sqle){
+					throw sqle;
+				}
+			}
+		}
+		return list;
 	}
 	public boolean save(Student student) throws Exception{
 		Connection connection = getConnection();

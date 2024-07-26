@@ -46,7 +46,7 @@
                         <div>
                             <button id="filter-button">絞込み</button>
                         </div>
-                        <div style="color:red; display:none;">${errors.get("f1")}</div>
+                        <div style="color:red; ">${errors.get("f1")}</div>
                     </div>
                 </form>
                 <c:choose>

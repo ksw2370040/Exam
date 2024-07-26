@@ -21,13 +21,16 @@ public class StudentListAction extends Action{
 			HttpServletRequest req,HttpServletResponse res
 		)throws Exception{
 
+			String entYearStr="";
+			String classNum="";
+			String isAttendStr="";
 
 			HttpSession session = req.getSession();
 			Teacher teacher =(Teacher) session.getAttribute("user");
 
-			String entYearStr=req.getParameter("f1");
-			String classNum=req.getParameter("f2");
-			String isAttendStr=req.getParameter("f3");
+			entYearStr=req.getParameter("f1");
+			classNum=req.getParameter("f2");
+			isAttendStr=req.getParameter("f3");
 
 			int entYear=0;
 			boolean isAttend=false;
@@ -59,7 +62,8 @@ public class StudentListAction extends Action{
 			}else{
 				errors.put("f1","クラスを指定する場合は入学年度も指定してください");
 				req.setAttribute("errors", errors);
-				students = sDao.filter(teacher.getSchool(), isAttend);
+
+				students = sDao.filter(teacher.getSchool());
 			}
 
 			List<Integer> entYearSet = new ArrayList<>();
